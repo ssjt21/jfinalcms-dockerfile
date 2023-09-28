@@ -6,8 +6,9 @@ services:
       - mysql
     ports:
       - "8000:8000"
-#    volumes:
-#      - ./classroombookings-2.6.4/:/var/www/html
+    volumes:
+      - ./pom.xml:/app/pom.xml
+      - ./settings.xml:/usr/share/maven/conf/settings.xml
     networks:
       - vuln-network
   mysql:
@@ -17,7 +18,8 @@ services:
       - MYSQL_DATABASE=cms
       - TZ=Asia/Shanghai
     volumes:
-      - ./JFinaCMS.sql:/docker-entrypoint-initdb.d/JFinaCMS.sql
+      - ./initdb/:/docker-entrypoint-initdb.d/
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
       - 3306:3306
     command:

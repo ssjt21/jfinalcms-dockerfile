@@ -1,2 +1,0 @@
-<!-- 当前位置 -->
-当前位置：<a href="#(currentSite.url)/">首页</a>&nbsp;>&nbsp;#if(currentCategory??)#category_parent_list(categoryId=currentCategory.id)#for(category : categorys)<a href="#(category.path)">#(category.name)</a>&nbsp;>&nbsp;#end#end<a href="#(currentCategory.path)">#(currentCategory.name)</a>#else#if(position??)#(position)#end#end

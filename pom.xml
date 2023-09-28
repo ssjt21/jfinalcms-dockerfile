@@ -215,6 +215,7 @@
             <configuration>
                 <port>8000</port>
                 <path>/</path>
+                <url>http://0.0.0.0:8000/manager/text</url>
                 <uriEncoding>${project.build.sourceEncoding}</uriEncoding>
             </configuration>
         </plugin>
