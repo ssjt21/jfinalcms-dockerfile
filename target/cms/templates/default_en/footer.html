@@ -1,0 +1,13 @@
+﻿<!--底部信息-->
+<div class="clear blank10"></div>
+	<div class="footer">
+		<div class="footnav">
+	        <a href="#(currentSite.url)/">home</a>
+	        #category_root_list()
+				#for(category : categorys)
+					 <a href="#(category.path)">#(category.name)</a>
+				#end
+			#end
+       </div>  
+	<div class="copyright">Powered by <a href="http://www.jrecms.com" target="_blank">JreCms</a>Copyright © 2012-2016</div>
+</div>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- 公共页面 -->
+	#include("../include/common.html")
+	<!-- 公共页面 /-->
+	<style type="text/css">
+	.CodeMirror {
+          border: 1px solid #eee;
+          height: auto;
+    }
+
+    .CodeMirror-scroll {
+          height: auto;
+          overflow-y: hidden;
+          overflow-x: auto;
+     }
+	</style>
+</head>
+<body class="hold-transition skin-purple sidebar-mini">
+    <div class="wrapper">
+        <!-- 页面头部 -->
+        #include("../include/header.html")
+        <!-- 页面头部 /-->
+        <!-- 导航侧栏 -->
+        #include("../include/menu.html")
+        <!-- 导航侧栏 /-->
+        <!-- 内容区域 -->
+        <div class="content-wrapper" id="contentDiv">
+            <!-- 正文区域 -->
+            <section class="content">
+            	<form id="inputForm" action="#(base)/admin/template/save" method="post">
+           		<input type="hidden" name="directory" value="#(directory)" />
+				<!--表单信息-->
+                <div class="panel panel-default" style="padding-bottom: 10px;">
+                    <div class="panel-heading">新增模板</div>
+                    <div class="box-body">
+                    	<div class="row data-type">
+	                    	<div class="col-md-2 title">文件名称</div>
+	                        <div class="col-md-10 data">
+	                           <input type="text" class="form-control" placeholder="文件名称" name="fileName" value="">
+	                        </div>
+                        </div>
+                    	<textarea name="content" class="form-control" style="min-height: 500px;" id="content"></textarea>
+                    </div>
+	                <!--工具栏-->
+	                <div class="box-tools text-center">
+	                    <button type="submit" class="btn bg-maroon">保存</button>
+	                    <button type="button" class="btn bg-default" onclick="history.back(-1);">返回</button>
+	                </div>
+	                <!--工具栏/-->
+                </div>
+                <!--表单信息/-->
+                </form>
+            </section>
+            <!-- 正文区域 /-->
+        </div>
+        <!-- 内容区域 /-->
+        <!-- 底部导航 -->
+        #include("../include/footer.html")
+        <!-- 底部导航 /-->
+    </div>
+</body>
+</html>
+<!---->
+<script>
+ $(document).ready(function() {
+     // 激活导航位置
+     setSidebarActive("admin-template");
+ });
+</script>
+<script type="text/javascript">
+var editor = CodeMirror.fromTextArea(document.getElementById("content"), {
+	mode:  "text/html",
+	lineNumbers: true,
+	lineWrapping: true
+});
+</script>
+<script>
+$().ready(function() {
+
+	var $inputForm = $("#inputForm");
+	
+	// 表单验证
+	$inputForm.validate({
+		rules: {
+			fileName: "required"
+		}
+	});
+
+});
+</script>

@@ -1,0 +1,87 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<!DOCTYPE html>
+<html>
+ <head lang="en"> 
+  <meta charset="UTF-8"> 
+  <title>国际交流-详情</title> 
+  <meta name="keywords" content="国际交流-详情"> 
+  <meta name="description" content="国际交流-详情"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <meta name="renderer" content="webkit"> 
+  <meta http-equiv="Cache-Control" content="no-siteapp"> 
+  <link rel="stylesheet" href="#(tpath)/static/css/amazeui.css"> 
+  <link rel="stylesheet" href="#(tpath)/static/css/main.css"> 
+ </head> 
+ <body> 
+  <!--[if (gte IE 9)|!(IE)]><!--> 
+  <script src="#(tpath)/static/js/jquery.min.js"></script> 
+  <!--<![endif]--> 
+  
+   <!-- header start -->
+ #include("header.html")
+ <!-- header end -->
+ 
+  <div class="list-main"> 
+   <div class="am-container"> 
+    <div class="list-nav" data-am-sticky=""> 
+     <ul class="am-cf"> 
+      #category_children_list(categoryId=currentCategory.parentId)
+      #for(category : categorys)
+      <li #if(category.id==currentCategory.id)class="list-active"#end><a href="#(category.path)">#(category.name)</a></li>
+      #end
+      #end
+     </ul> 
+     <div class="curBg"></div> 
+     <div class="cls"></div> 
+    </div> 
+    <div>
+     <img src="#(tpath)/static/images/banner.png" class="am-img-responsive" alt="">
+    </div> 
+    <div class="list-pag">
+      当前位置：
+     <a href="#(currentSite.url)/">主页</a> &gt; 
+     <a href="#(currentCategory.parent.path)">#(currentCategory.parent.name)</a> &gt; 
+     <a href="#(currentCategory.path)">#(currentCategory.name)</a> &gt; 
+    </div> 
+    <div class="list-center"> 
+     <div class="show-con"> 
+      <div class="show-con-top"> 
+       <span> <h1>英国斯坦福德中学</h1> </span> 
+       <p>浏览：89　日期：2017-08-29</p> 
+      </div> 
+      <div class="show-con-nr"> 
+       <div style="text-align: center;"> 
+        <img alt="" src="#(tpath)/static/images/1-1FR92350252U.jpg" style="width: 600px; height: 450px;">
+       </div> 
+       <br> 
+       <div>
+         斯坦福德校成立于1877年，属于斯坦福德捐赠学校中的其中一所，另外2所学校分别是斯坦福女子学校和斯坦福德初级中学。每个学校都各有其领导人，但是校长却只有一个。三所学校相互合作，互通有无，共同举办多种文化、社会和教育活动，其中A-Level采取混合教学的方式。三所学校的日常活动与当地紧密相连。
+       </div> 
+       <div>
+         &nbsp;
+       </div> 
+       <div>
+         斯坦福德学校位于城镇中心。设备齐全，住宿舒适。学校并没有特别的宗教信仰，但是提供宗教教育，全体学生每天都会有一次集合。学校的学业目标旨在避免过早的专业，鼓励学生采用最佳的传统与现代相结合的学习方式。该校学术成绩优秀。积极鼓励发展音乐和戏剧（设有专门的艺术表演大厅）。许多男孩都会至少一种乐器。戏剧是课程的一部分，每年都会进行多场演出。各种运动和游戏也应有尽有。学校还设有多种社团和俱乐部，积极鼓励学生参加各种社区和社会服务[1] &nbsp;。学校在爱丁堡伯爵奖章计划中成绩显著，深受广大学生的喜爱，同时也与CCF紧密合作。
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- footer start -->
+ #include("footer.html")
+ <!-- footer end -->
+  <!--[if lt IE 9]>
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/modernizr.js"></script>
+<script src="static/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]--> 
+  <script src="#(tpath)/static/js/amazeui.js"></script> 
+  <script src="#(tpath)/static/js/jquery.SuperSlide.2.1.1.js"></script> 
+  <script src="#(tpath)/static/js/main.js"></script>  
+ </body>
+</html>

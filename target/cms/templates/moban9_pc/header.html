@@ -1,0 +1,54 @@
+<!--顶部开始-->
+<div class="top_main" aos="fade-down" aos-easing="ease" aos-duration="700">
+    <div class="top w1200 clearfix"> <span class="top_l fl"></span>
+        <ul class="top_r fr">
+            #category(id="1107")<li style="padding-right: 0;"><a href="#(category.path)">网站地图</a></li>#end
+            <li class="split"></li>
+            <li><a href="javascript:void(0);" title="加入收藏" id="addFavo">加入收藏</a></li>
+            <li class="split"></li>
+            #category(id="1105")<li><a href="#(category.path)" title="在线留言">在线留言</a></li>#end
+        </ul>
+    </div>
+</div>
+<!--顶部结束-->
+<!--头部开始-->
+<div class="header_main">
+    <div class="header w1200 clearfix"><a class="logo fl" aos="fade-right" aos-easing="ease" aos-duration="700" aos-delay="100" href="#(currentSite.url)/" title="我的网站"><img src="#(tpath)/static/images/logo.png" alt="我的网站"></a>
+        <div class="tel fl" aos="fade-left" aos-easing="ease" aos-duration="700" aos-delay="100"> <s class="icon"></s>
+            <p class="p1">全国咨询热线</p>
+            <p class="p2"></p>
+        </div>
+        <!--搜索栏开始-->
+        <div class="search fr" aos="fade-left" aos-easing="ease" aos-duration="700" aos-delay="100">
+            <form action="#(currentSite.url)/search">
+                <input class="stxt" type="text" name="keyword" value="请输入关键字" onfocus="if(this.value==defaultValue)this.value=''"/>
+                <input type="submit" class="sbtn" value="搜索"/>
+            </form>
+        </div>
+        <!--搜索栏结束-->
+    </div>
+</div>
+<!--头部结束-->
+<!--导航开始-->
+<div class="nav_main" aos="fade-down" aos-easing="ease" aos-duration="700" aos-delay="100">
+    <div class="nav w1200">
+        <div class="first_line"></div>
+        <ul class="list clearfix" id="nav">
+            <li  class='item hover' id='cur'><a href="#(currentSite.url)/">网站首页</a></li>
+            #category_root_list(count=7)
+            #for(category : categorys)
+            <li class="item "><a href="#(category.path)" title="#(category.name)">#(category.name)</a>
+                <ul class="subnav">
+                    #category_children_list(categoryId=category.id)
+                    #for(categoryItem : categorys)
+                    <li class="nav1"><a href="#(categoryItem.path)" title="#(categoryItem.name)">#(categoryItem.name)</a></li>
+                    #end
+                    #end
+                </ul>
+            </li>
+            #end
+            #end
+        </ul>
+    </div>
+</div>
+<!--导航结束-->

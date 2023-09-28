@@ -1,0 +1,40 @@
+<div class="sidebar" id="sidebar">
+	#if(currentCategory??)
+    <div class="side-menu">
+        <div class="topclass">
+            <h2>#(currentCategory.name)</h2>
+            <p>打造纯植物精华无伤害护肤品</p>
+        </div>
+            <dl class="list" id="menu">
+               #category_children_list(count=10,categoryId=currentCategory.id)
+	     	   #for(category : categorys)
+                <dd #if(currentCategory?? && (category.id==currentCategory.id || currentCategory.treePath.contains(','+category.id+','))) class="current" #end>
+                    <a href="#(category.path)">#(category.name)</a>
+                    <ul class="drop" >
+                   #category_children_list(count=10,categoryId=category.id)
+                      #for(categoryItem : categorys)
+					<li><a href="#(categoryItem.path)">#(categoryItem.name)</a></li>
+					#end
+					#end
+				   </ul>
+                </dd>
+              #end
+			  #end  
+                </dl>
+    </div>
+    #end
+        <div class="side-contact">
+        
+    	<div class="sketch"><img src="#(tpath)/static/images/20160730111825_4925.jpg" title="联系我们" alt="联系我们" /></div>
+        <div class="main">
+            <h2>联系我们</h2>
+        	
+        	<strong>#(currentCompany.name)</strong><br />
+负责人：#(currentCompany.contact)<br />
+电话：#(currentCompany.phone)<br />
+邮箱：#(currentCompany.email)<br />
+网址：#(currentWeb.domain)<br />
+地址：#(currentCompany.address)
+                    </div>
+            </div>
+</div>

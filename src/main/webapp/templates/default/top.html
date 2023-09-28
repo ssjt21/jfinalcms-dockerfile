@@ -1,0 +1,7 @@
+<!-- 头部大屏 -->
+<div class="jumbotron jumbotron-fluid mb-2" style="#if(currentCategory?? && currentCategory.image??)background:#e9ecef url(#(currentCategory.image)) #else background:#e9ecef url(#(tpath)/static/images/top.jpg)#end;background-size:cover;no-repeat">
+  <div class="container text-light">
+    <h1 class="fs-18 fs-sm-26 wow fadeInDown">#if(currentCategory??)#(currentCategory.name)#end</h1>
+    <p class="fs-14  fs-sm-18 wow fadeInDown">#if(currentCategory??)#(currentCategory.subname)#end</p>
+  </div>
+</div>

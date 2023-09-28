@@ -1,0 +1,89 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<!DOCTYPE html>
+<html>
+ <head lang="en"> 
+  <meta charset="UTF-8"> 
+  <title>教研教学-详情</title> 
+  <meta name="keywords" content="教研教学-详情"> 
+  <meta name="description" content="教研教学-详情"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <meta name="renderer" content="webkit"> 
+  <meta http-equiv="Cache-Control" content="no-siteapp"> 
+  <link rel="stylesheet" href="#(tpath)/static/css/amazeui.css"> 
+  <link rel="stylesheet" href="#(tpath)/static/css/main.css"> 
+ </head> 
+ <body> 
+  <!--[if (gte IE 9)|!(IE)]><!--> 
+  <script src="#(tpath)/static/js/jquery.min.js"></script> 
+  <!--<![endif]--> 
+ <!-- header start -->
+ #include("header.html")
+ <!-- header end -->
+  <div class="list-main"> 
+   <div class="am-container"> 
+    <div class="list-nav" data-am-sticky=""> 
+     <ul class="am-cf"> 
+      #category_children_list(categoryId=currentCategory.parentId)
+      #for(category : categorys)
+      <li #if(category.id==currentCategory.id)class="list-active"#end><a href="#(category.path)">#(category.name)</a></li>
+      #end
+      #end
+     </ul> 
+     <div class="curBg"></div> 
+     <div class="cls"></div> 
+    </div> 
+    <div>
+     <img src="#(tpath)/static/images/banner.png" class="am-img-responsive" alt="">
+    </div> 
+    <div class="list-pag">
+      当前位置：
+     <a href="#(currentSite.url)/">主页</a> &gt; 
+     <a href="#(currentCategory.parent.path)">#(currentCategory.parent.name)</a> &gt; 
+     <a href="#(currentCategory.path)">#(currentCategory.name)</a> &gt; 
+    </div> 
+    <div class="list-center"> 
+     <div class="show-con"> 
+      <div class="show-con-top"> 
+       <span> <h1>野外紧急避震必知技巧</h1> </span> 
+       <p>浏览：122　日期：2017-08-30</p> 
+      </div> 
+      <div class="show-con-nr">
+        地震来临之前有什么预防措施吗?下面是出国留学网小编为您带来的“野外紧急避震必知技巧”的最新资讯，很多精彩请锁定出国留学网实用资料栏目。 　　
+       <br> 
+       <br> 
+       <div style="text-align: center;"> 
+        <img alt="" src="#(tpath)/static/images/1-1FS011040a00.jpg" style="width: 600px; height: 375px;">
+       </div> 
+       <br> 1.在郊外遇到地震时，尽量找空旷的地带躲避，远离山脚、陡崖等危险地带。 　　
+       <br> 2.当遇到山崩、滑坡日寸，应沿斜坡横向水平方向撤离，躲在结实的障碍物或地洶、地坎下。 　　
+       <br> 3.正在野外的人，要迅速离开河边、水坝或桥梁，防止地震时河岸坍塌、堤坝跨塌。要避开山脚、陡崖，以防山崩、滚石、滑坡、泥石流等，如遇山崩、滑坡，要迅速向滚石两侧躲避，切不可顺着滚石方向往山下跑;不能到桥下、隧道里避震，以免塌方造成伤亡。 　　
+       <br> 4.迅速离开山边、水边等危险环境。 　　
+       <br> 5.避开危险物、高耸或悬挂的物品变压器、电线杆、路灯等;广告牌、吊车等。 　　
+       <br> 6.不要乱跑,避开人多的地方,不能随便返回室内。 　
+       <br> 　
+       <br> 三大原则 　　
+       <br> 原则一：因地制宜，正确抉择。是住平房还是住楼房，地震发生在白天还是晚上，房子是不是坚固，室内有没有避震空间，你所处的位置离房门远近，室外是否开阔、安全。 　　
+       <br> 原则二：行动果断、切忌犹豫。避震能否成功，就在千钧一发之际，决不能瞻前顾后，犹豫不决。如住平房避震时，更要行动果断，或就近躲避，或紧急外出，切勿往返。 　　
+       <br> 原则三：伏而待定，不可疾出。古人在《地震录》里曾记载："卒然闻变，不可疾出，伏而待定，纵有覆巢，可冀完卵"，意思就是说，发生地震时，不要急着跑出室外，而应抓紧求生时间寻找合适的避震场所，采取蹲下或坐下的方式，静待地震过去，这样即使房屋倒塌，人亦可安然无恙。 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- footer start -->
+ #include("footer.html")
+ <!-- footer end -->
+  <!--[if lt IE 9]>
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/modernizr.js"></script>
+<script src="static/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]--> 
+  <script src="#(tpath)/static/js/amazeui.js"></script> 
+  <script src="#(tpath)/static/js/jquery.SuperSlide.2.1.1.js"></script> 
+  <script src="#(tpath)/static/js/main.js"></script>  
+ </body>
+</html>

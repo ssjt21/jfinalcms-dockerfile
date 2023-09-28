@@ -1,0 +1,49 @@
+<div class="footer">
+
+	<div class="w">
+		 
+      <div class="zhong ">
+        <p class="ilink clearfix"><span class="s">友情链接<em>LINK</em></span>
+           #friend_link_list(count=3,gid=1)#for(friendLink : friendLinks)
+<a href="#(friendLink.url)" target="_blank">#(friendLink.name)</a> | 
+#end#end</p> 
+        <p class="keywords"><span>热门关键词：</span>关键词1,关键词2,关键词3</p>
+        <div class="copyright clearfix">
+            <p>版权所有： #(currentCompany.name) 电话：#(currentCompany.mobile) <br/>地址：#(currentCompany.address)</p>
+            <p><a href="http://www.miitbeian.gov.cn" target="_blank"> #(currentWeb.icp)</a> </p>
+        </div>
+      </div>
+     
+        <div class="clear"></div>
+    </div></div>
+
+
+
+<div class="side" id="side">
+  <ul>
+
+    <li class="qq"><a href="http://wpa.qq.com/msgrd?v=3&uin=#(currentCompany.qq)&site=qq&menu=yes" target="_balnk">QQ</a>
+    </li>
+    <li class="code"><span>电话</span>
+      <div class="wd">
+         
+        <div class="ftel">咨询电话：<br/><p class="format400" ig-phone>#(currentCompany.mobile)</p></div>
+      </div>
+    </li>
+    <li class="code liuyan"><span>扫一扫</span>
+      <div class="wd">
+        <img src="#(currentCompany.weixin)">
+        <span>手机网站</span>
+         
+      </div>
+    </li>
+    <li class="returntop" id="gotop"><a href="javascript:;">TOP</a>
+    </li>
+  </ul>
+</div>
+<script src="#(tpath)/static/js/jqueryplugs.js"></script>
+	<script src="#(tpath)/static/js/app.js"></script>
+  <script src="#(tpath)/static/js/jquery.easing.min.js"></script>
+
+	</body>
+	</html>

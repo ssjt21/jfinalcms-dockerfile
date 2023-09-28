@@ -1,0 +1,50 @@
+<!-- header start -->
+#include("header.html")
+<!-- header end -->
+<div class="minbanner" id="banner">
+        	<ul class="list">
+            #slide_list(count=3,gid=2)
+			#for(slide : slides)
+                <li><img src="#(slide.image)" border="0" /></li>
+            #end
+			#end
+            </ul>
+</div>
+<div class="kswrap">
+<div class="kn clearfix">
+	<div class="list fl">
+      
+    	<span>新闻动态：</span>
+        <div class="box">
+        	<ul id="newscroll">
+              #content_list(count=5,categoryId=704)
+     		  #for(content : contents) 
+            	<li><a href="#(content.path)" target="_blank">#(abbreviate(content.title,30,''))</a></li>
+              #end
+              #end 
+            </ul>
+        </div>
+            </div>
+    <div class="search fr">
+	<form action="#(currentSite.url)/search"  method="get">
+    <input type="text" id="SearchTxt" name="keyword" />
+	<button type="submit" id="Searchs"></button>
+	</form>
+    </div>
+</div>
+</div>
+<div class="page clearfix">
+		<!-- left start -->
+	#include("left.html")
+	<!-- left end -->
+ 		 <div class="right fr">
+				<div class="title4">
+                	<div class="sitepath fr" id="sitepath"><span>当前位置：#include("position.html")</div>
+                    <h3 class="fl">#(currentCategory.name)</h3>
+                </div>
+           <div class="wrap"  id="empty">#(currentCategory.introduction)</div>
+		</div>
+</div>
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->

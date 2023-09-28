@@ -1,0 +1,77 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>JreCms-永久开源免费的JAVA企业网站开发建设管理系统</title>
+<meta name="keywords" content="cms,免费cms,开源cms,企业cms,建站cms">
+<meta name="description" content="JreCms是一套全新内核且永久开源免费的JAVA企业网站开发建设管理系统，是一套高效、简洁、 强悍的可免费商用的JAVA CMS源码，能够满足各类企业网站开发建设的需要。系统采用简单到想哭的模板标签，只要懂HTML就可快速开发企业网站。官方提供了大量网站模板免费下载和使用，将致力于为广大开发者和企业提供最佳的网站开发建设解决方案。">
+<link rel="stylesheet" href="#(tpath)/static/css/style.css">
+<script src="#(tpath)/static/js/common.js" type="text/javascript"></script>
+
+
+</head>
+<body>
+  <div class="header_top ">
+    <div class="w clearfix">
+          <div class="fl"><em>欢迎光临#(currentCompany.name)官网，您值得信赖的工程拆除专家！ </em></div>
+          <div class="t fr">
+       <li class="addFav " id="addFavo"><a href="javascript:;"> 加入收藏</a>  |  </li>
+       <li class="setHome " id="setHome"><a href="javascript:;"> 设为首页</a>  |  </li>
+            #category(id=505)<li class="setHome " ><a href="#(category.path)"> 联系我们</a></li>#end
+      </div>
+     </div>
+  </div>
+<div class="top clearfix">
+  <div class="header w">
+     <div class="logo">
+      <a href="#(currentSite.url)/" alt="#(currentCompany.name)" title="#(currentCompany.name)"><img src="#(currentWeb.logo)"  alt="#(currentCompany.name)" title="#(currentCompany.name)"/></a>
+      <div class="header_g ">
+<p style="font-size:15px;"><span >诚信务实 质量保证 优秀服务</span><br/>
+免费上门测量，为客户提供全方位的服务 </p>
+      </div>
+     </div> 
+    <div class="fr">
+      <div class="tel s">
+        <h1>全国服务热线：</h1>
+         <p class="Telephone" ig-phone>#(currentCompany.mobile)</p>
+     </div>
+     
+      </div>
+    <div class="clear"></div>
+  </div>     
+</div>
+  
+  <div class=" nav">
+     <div class="w">
+    <ul>
+      <li><a href="#(currentSite.url)/"  title="网站首页">网站首页</a></li>
+
+        #category_root_list(count=10)
+	   #for(category : categorys)
+        <li><a href="#(category.path)" title="#(category.name)" #if(currentCategory?? && (category.id==currentCategory.id || currentCategory.treePath.contains(','+category.id+',')))class="hover"#end ><i>#(category.name)</i></a>
+            <div class="subNav">
+              <div class="pai">
+                #category_children_list(count=10,categoryId=category.id)
+                  #for(categoryItem : categorys)			
+                <a href="#(categoryItem.path)">#(abbreviate(categoryItem.name,4,''))</a>
+                #end
+                 #end	
+                <div class="clear"></div>
+                <p>#content(id=506)
+				#(abbreviate(content.text,70,''))
+				#end...
+                 </p>
+              </div>
+              <div class="stemp"><img  src="#(category.ico)" alt="" /></div>
+          </div>
+        </li>
+       #end
+      #end	
+       
+            </ul>
+        
+  </div>
+  </div>

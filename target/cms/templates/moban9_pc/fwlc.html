@@ -1,0 +1,86 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>我的网站</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="order by dede58.com" />
+    <meta name="viewport" content="width=1380">
+    <link href="#(tpath)/static/css/aos.css" rel="stylesheet">
+    <link href="#(tpath)/static/css/style.css" rel="stylesheet">
+    <link href="#(tpath)/static/css/common.css" rel="stylesheet">
+    <script src="#(tpath)/static/js/jquery.js"></script>
+    <script src="#(tpath)/static/js/jquery.superslide.2.1.1.js"></script>
+    <script src="#(tpath)/static/js/common.js"></script>
+</head>
+<body>
+<!-- header start -->
+#include("header.html")
+<!-- header end -->
+<!--内页大图开始-->
+<div class="nybanner" aos="fade-up" aos-easing="ease" aos-duration="700"> <img src="#(tpath)/static/images/nybanner.jpg"/></div>
+<!--内页大图结束-->
+<div class="submian">
+    <div class="w1200 clearfix">
+        <div class="sobtitle"><s class="icon"></s>您的位置：<a href='#(currentSite.url)/'>主页</a> > <a href='#(currentCategory.path)'>服务流程</a> > </div>
+        <div class="subleft fl">
+            <!--栏目分类开始-->
+            <div class="lefta bor9">
+                <div class="title">
+                    <h2>服务流程</h2>
+                </div>
+                <div class="comt">
+                    <ul>
+
+                    </ul>
+                </div>
+            </div>
+            <!--栏目分类结束-->
+            <!--推荐产品开始-->
+            <div class="leftnews bor9">
+                <div class="title"><i>推荐产品</i></div>
+                <div class="leftprocomt clearfix">
+                    <ul>
+                        #content_list(count=4,categoryId=1101)
+                        #for(content : contents)
+                        <li #if(for.index%2==0) style='margin-right:0;' #end> <a href="#(content.path)" title="#(content.title)"><img src="#(content.ico)" alt="#(content.title)">
+                            <p>#(content.title)</p>
+                        </a></li>
+                        #end
+                        #end
+                    </ul>
+                </div>
+            </div>
+            <!--推荐产品结束-->
+            <!--联系我们开始-->
+            <div class="leftnews bor9">
+                <div class="title"><i>联系我们</i></div>
+                <div class="leftcont">
+                    <h2>我的网站</h2>
+                    <span>地址：<br>
+      手机：<br>
+      </span>
+                    <p>咨询热线<i></i></p>
+                </div>
+            </div>
+            <!--联系我们结束-->
+        </div>
+
+        <div class="subright fr">
+            <!--单页内容开始-->
+            <div class="aboutlist">
+                #(currentCategory.introduction)
+            </div>
+            <!--单页内容结束-->
+        </div>
+    </div>
+</div>
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!-- header start -->
+#include("header.html")
+<!-- header end -->
+	<!--banner-->
+<div class="iban">
+	  <div class="banner" id="banner">
+    <ul class="list">
+		#slide_list(count=3,gid=1)
+		#for(slide : slides)
+            <li class="item" style="background:url(#(slide.image)) center top no-repeat;"></li>
+		#end
+		#end
+		</ul>
+        
+    <div class="clear"></div>
+        </div>
+  <div class="tip s"></div>
+  
+</div>
+
+
+<div class="ipro w clearfix">
+  
+  <div class="headx">
+        	<h2><em>拓展项目</em><span>EXPAND</span></h2>
+            #category(id=300)<a href="#(category.path)" class="mo">MORE+</a>#end
+        </div>
+  <div class="tod">
+  	<ul>
+      #content_list(count=8,categoryId=300)
+      #for(content : contents)
+  		<li><a href="#(content.path)" title="#(content.title)"><img src="#(content.ico)" alt="#(content.title)" title="#(content.title)" /></a>
+          <div class="wd"><b><a href="#(content.path)" title="#(content.title)">#(abbreviate(content.title,11,''))</a></b>
+            				<div class="description">#(abbreviate(content.text,25,''))...
+        </div>
+            				<a href="#(content.path)" class="detail">查看详情></a>
+          </div>
+      </li>
+     #end
+     #end
+  		
+          	</ul>
+  </div>
+    </div>
+
+<div class="igaog clearfix">
+	<div class="w">
+      <b>专业至上、效果为本</b>
+      <p>与其碌碌无为，不如现在行动，加入我们的培训计划，共同体验成长的滋味</p>
+      <div class="link">
+        #category(id=307)<a href="#(category.path)" class="gao_link">#(category.name)<em></em></a>#end
+        #category(id=306)<a href="#(category.path)" class="gao_link">#(category.name) </a>#end
+		</div>
+      </div>
+</div>
+
+<div class="ipro2 w clearfix">
+  
+  <div class="headx">
+        	<h2><em>军事拓展</em><span>MILITARY</span></h2>
+            #category(id=301)<a href="#(category.path)" class="mo">MORE+</a>#end
+        </div>
+  <div class="tod">
+  	<ul>
+      #content_list(count=8,categoryId=301)
+      #for(content : contents)
+  		<li><a href="#(content.path)" title="#(content.title)"><img src="#(content.ico)" alt="#(content.title)" title="#(content.title)" /></a>
+          <div class="wd"><a href="#(content.path)" title="#(content.title)">#(abbreviate(content.title,11,''))</a></div>
+      </li>
+      #end
+      #end
+  		
+          	</ul>
+  </div>
+    </div>
+
+ <div class="icase clearfix">
+   <div class="w">
+  
+    <div class="headx">
+        	<h2><em>基地介绍</em><span>BASE</span></h2>
+            #category(id=302)<a href="#(category.path)" class="mo">MORE+</a>#end
+        </div>
+   
+  <div class="tod"  id="icase">
+  	<ul class="list clearfix" >
+      #content_list(count=8,categoryId=302)
+      #for(content : contents)
+  		<li><a href="#(content.path)" title="#(content.title)" class="img">
+          <img src="#(content.ico)" alt="#(content.title)" title="#(content.title)" /><div class="cover"></div></a>
+          <div class="wd"><span><a href="#(content.path)" title="#(content.title)">#(abbreviate(content.title,11,''))</a></span>
+          <div class="descrption">#(abbreviate(content.text,20,''))...
+        </div>
+            <a href="#(content.path)" class="detail s"></a>
+          </div>
+          <div class="shadow"></div>
+      </li>
+     #end
+     #end
+  		
+          	</ul>
+  </div>
+    <div class="arrow">
+    	<a href="javascript:;" class="arrow_r s"></a>
+      <a href="javascript:;" class="arrow_l s"></a>
+    </div>
+    </div> 
+</div>
+
+<div class="inews ">
+          <div class="w">
+          	
+              <div class="headx">
+        	<h2><em>最新动态</em><span>NEWS</span></h2>
+            #category(id=304)<a href="#(category.path)" class="mo">MORE+</a>#end
+        </div>
+              <div class="tod"  id="inews">
+              	<ul class="list">
+                 #content_list(count=4,categoryId=304)
+      			 #for(content : contents)
+              		<li><em>#date(content.publishDate,'MM/dd')<b>#date(content.publishDate,'YYYY')</b></em>
+                      <div class="wd">
+                        <a href="#(content.path)" title="#(content.title)"><h1>#(abbreviate(content.title,45,''))</h1></a>
+                        <span>#(abbreviate(content.text,117,''))</span>
+                        </div>
+                    </li>
+                   #end
+                   #end
+              		
+                                  	</ul>
+                
+              </div>
+                        
+        </div>
+        <div class="clear"></div>
+    </div>
+<div class="imap">
+  <div class="icontact">
+    <div class="w">
+        
+        <div class="headx">
+                <h2><em>在线留言</em><span>MESSAGE</span></h2>
+                #category(id=306)<a href="#(category.path)" class="mo">MORE+</a>#end
+            </div>
+                  <div class="wd">
+        <span>请填写完整以下信息，或者直接联系我们，<br/>我们将会给您尽快的回复！</span>
+        <div class="tel3 s" ><span class="fs14">电话：</span><span  ig-phone>#(currentCompany.mobile)</span></div>
+         <div class="iemail s">#(currentCompany.email)</div>
+       <div class="iadd s">#(currentCompany.address)</div>
+       </div>
+        <div class="imessage" >
+                    
+                      <p>您好 SAY HELLO!</p>
+                    <div class="comt" style="position:relative;">
+                       <form name='formPost' id='formPost' onsubmit="return submsg(this);" method='POST' >
+
+                        <ul>
+                        <li><label for=""></label><input type="text" value="" class="name txt" name="contact"  placeholder="请输入您的姓名" empty="请输入您的姓名" maxlength="46"  > </li>
+                         <li><label for=""></label><input type="text" value="" class="name txt" name="mobile"  placeholder="请输入您的电话" empty="请输入您的电话" error="请输入您的电话"  maxlength="40" ></li>
+                          
+                           <li style="float:none;width:637px;"><label for=""></label><textarea type="text" model="text" name="content"  onfocus="this.value=''; this.onfocus=null;">信息 Message</textarea></li>
+                          <input type="text" style="width:90px;height:30px;margin-left:10px" name="captcha" id="captcha"  value="" placeholder="验证码" empty="请输入验证码" maxlength="4">
+						  <img id="captchaImage" src="#(currentSite.url)/common/captcha/image" onclick="this.src='#(currentSite.url)/common/captcha/image?'+Math.round(Math.random()*10);" style="width:90px;position:absolute;bottom:1px">
+						  <input type="submit"  class="button1" value="提  交" style="margin-left:100px">
+                          </ul>
+
+                       
+</form>
+
+
+                    </div>
+
+                            </div>
+      </div>
+  </div>
+  
+  <div id="baiduMap" class="imapCon" style="line-height:16px;"></div>
+  <script type="text/javascript">
+   JsReady(function(){showMap('baiduMap','联系电话：18182121368',112.994279,28.148051,'地址：湖南省长沙市',19)}); 
+</script>
+</div>
+<script>
+
+//ajax提交留言
+function submsg(obj){
+  var url='#(currentSite.url)/guestbook/save';
+  var contact=$(obj).find("#contact").val();
+  var mobile=$(obj).find("#mobile").val();
+  var content=$(obj).find("#content").val();
+  var captcha=$(obj).find("#captcha").val();
+  
+  $.ajax({
+    type: 'POST',
+    url: url,
+    dataType: 'json',
+    data: {
+    	contact: contact,
+    	mobile: mobile,
+    	content: content,
+    	captcha: captcha
+    },
+    success: function (response, status) {
+      if(response.type=="success"){
+		 alert("谢谢您的反馈，我们会尽快联系您！");
+		 $(obj)[0].reset(); 
+      }else{
+    	 alert(response.data);
+      }
+    },
+    error:function(xhr,status,error){
+      alert('返回数据异常！');
+    }
+  });
+  return false;
+}
+</script>  
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->

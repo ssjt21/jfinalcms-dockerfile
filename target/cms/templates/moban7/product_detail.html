@@ -1,0 +1,185 @@
+<!-- header start -->
+#include("header.html")
+<!-- header end -->
+<div class="minbanner" id="banner">
+        	<ul class="list">
+            #slide_list(count=3,gid=2)
+			#for(slide : slides)
+                <li><img src="#(slide.image)" border="0" /></li>
+            #end
+			#end 
+            </ul>
+</div>
+<div class="kswrap">
+<div class="kn clearfix">
+	<div class="list fl">
+      
+    	<span>新闻动态：</span>
+        <div class="box">
+        	<ul id="newscroll">
+              #content_list(count=5,categoryId=16)
+     		  #for(content : contents) 
+            	<li><a href="#(content.path)" target="_blank">#(abbreviate(content.title,30,''))</a></li>
+               #end
+			   #end 
+            </ul>
+        </div>
+            </div>
+    <div class="search fr">
+	<form action="#(currentSite.url)/search"  method="get">
+    <input type="text" id="SearchTxt" name="keyword" />
+	<button type="submit" id="Searchs"></button>
+	</form>
+    </div>
+</div>
+</div>
+<div class="page clearfix">
+		<!-- left start -->
+	#include("left.html")
+	<!-- left end -->
+ 		 <div class="right fr">
+				<div class="title4">
+                	<div class="sitepath fr" id="sitepath"><span>当前位置：#include("position.html")</div>
+                    <h3 class="fl">#(currentCategory.name)</h3>
+                </div>
+          <div class="wrap">
+           		<div class="pageProduct clearfix">
+                     <div class="photo">
+                         <i><img src="#(currentContent.ico)" alt="#(currentContent.title)"></i>
+                     </div>
+                     <div class="wd">
+                       <ul>
+                         <li class="item">产品名称：<span class="proname">#(currentContent.title)</span></li>
+                         <li class="item">产品分类：#(currentContent.category.name)</li>
+                         <li class="item">咨询热线：<span style="font-size:18px;color:red;font-weight:bold;" class="format4002">#(currentCompany.phone)</span></li>
+                         <li class="btn"><a href="javascript:;" title="在线订购" class="order" id="book">在线订购</a></li>
+                       </ul>
+                     </div>
+                     <div class="clear"></div>
+                     <div class="info">
+                         <div class="ts">产品说明：</div>
+                         <div class="infor">#(currentContent.introduction)</div>
+                     </div>
+              <div class="baiduShare">
+<style type="text/css">
+#bdshare { float:right !important; width:180px; }
+#bdshare span.bds_more, .bds_tools a { line-height:14px; }
+.baiduShare { margin-bottom:5px; }
+</style>
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+<span class="bds_more">分享到：</span>
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=0" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=424323"></script>
+
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+ <div class="clear"></div>
+ </div>
+                      <div class="relatedLink">
+                         <div class="prevLink">上一篇：#if(currentContent.lastContent??)<a href="#(currentContent.lastContent.path)">#(abbreviate(currentContent.lastContent.title,15,''))</a>#else无#end</div>
+                         <div class="nextLink">下一篇：#if(currentContent.nextContent??)<a href="#(currentContent.nextContent.path)">#(abbreviate(currentContent.nextContent.title,15,''))</a>#else无#end</div>
+                     </div>
+                  <div class="reInformation clearfix">
+                <div class="tit">相关推荐</div>
+                <ul class="clearfix">
+                  #content_list(count=3,categoryId=12)
+     		     #for(content : contents) 
+                    <li>
+                        <a href="#(content.path)" class="g" title="#(abbreviate(content.title,18,''))"><img src="#(content.ico)" alt="#(abbreviate(content.title,18,''))"></a>
+                        <a href="#(content.path)" class="t" title="#(abbreviate(content.title,18,''))">#(abbreviate(content.title,18,''))</a>
+                    </li>
+                 #end
+                 #end   
+                   
+                                    </ul>
+           </div>
+                  			<div class="reInformation" id="bookTip">
+                <div class="tit">在线订购</div>
+                <div class="formData">
+                      <form name="formPost" id="formPost" onsubmit="return submsg(this);" method="POST" >
+
+                    <table cellpadding="0" cellspacing="0" border="0" width="620" style="margin:0 auto;">
+                        <tbody><tr valign="middle" class="item required">
+                           <td height="40" align="right"><span class="red">*</span><label for="Name">订购人：</label></td>
+                           <td width="250"><input type="text" name="contact"  id="Name" model="name"></td>
+                           <td><div class="tip"></div></td>
+                        </tr>
+                        <tr valign="middle" class="item required">
+                           <td height="40" align="right"><span class="red">*</span><label for="Phone">联系方式：</label></td>
+                           <td><input type="text" name="mobile"  id="Phone" model="phone"></td>
+                           <td><div class="tip"></div></td>
+                        </tr>
+                        <tr valign="middle" class="item">
+                           <td height="40" align="right"><label for="Content">备注内容：</label></td>
+                           <td><textarea type="text" name="content"  id="Content"></textarea></td>
+                           <td><div class="tip"></div></td>
+                        </tr>
+                        <tr valign="middle" class="code">
+                           <td height="40" align="right"><label for="txtImageCode">验证码：</label></td>
+                           <td><input type="text" name="captcha" id="captcha"   maxlength="4" id="txtImageCode" value=""> <img title="看不清？请用力点击这里！" id="captchaImage" src="#(currentSite.url)/common/captcha/image" onclick="this.src='#(currentSite.url)/common/captcha/image?'+Math.round(Math.random()*10);" style="height:25px;width:63px;cursor:pointer;"></td>
+                           <td><div class="tip"></div></td>
+                        </tr>
+                        <tr valign="middle">
+                           <td height="40"> </td>
+                           <td><input type="submit" value="确认提交" class="sub"></td>
+                           <td> </td>
+                        </tr>
+                        </tbody></table>
+                   
+</form>
+
+
+                </div>
+            </div>
+                 </div>
+           </div>
+		</div>
+</div>
+
+<script>
+
+//ajax提交留言
+function submsg(obj){
+  var url='#(currentSite.url)/guestbook/save';
+  var contact=$(obj).find("#contact").val();
+  var mobile=$(obj).find("#mobile").val();
+  var content=$(obj).find("#content").val();
+  var captcha=$(obj).find("#captcha").val();
+  
+  $.ajax({
+    type: 'POST',
+    url: url,
+    dataType: 'json',
+    data: {
+    	contact: contact,
+    	mobile: mobile,
+    	content: content,
+    	captcha: captcha
+    },
+    success: function (response, status) {
+      if(response.type=="success"){
+		 alert("谢谢您的反馈，我们会尽快联系您！");
+		 $(obj)[0].reset(); 
+      }else{
+    	 alert(response.data);
+      }
+    },
+    error:function(xhr,status,error){
+      alert('返回数据异常！');
+    }
+  });
+  return false;
+}
+</script>
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->
+

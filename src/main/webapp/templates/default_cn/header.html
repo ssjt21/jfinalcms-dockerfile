@@ -1,0 +1,62 @@
+<!-- header-->
+<div class="header">
+	<a href="#(currentSite.url)/"><img src="#(currentWeb.logo)" alt="#(currentWeb.siteName)" /></a>
+	<div class="tel">电话：<span>#(currentCompany.phone)</span>
+	<span style="margin-left: 20px;">
+                          站点:
+         <a href="#(base)/default_cn" style="color: #009944;">中文</a>
+         <a href="#(base)/default_en" style="color: #009944;">英文</a>
+    </span>
+	</div>
+</div>
+
+<div class="nav-bg">
+	<ul id="nav" class="nav clearfix">
+		<li class="nLi on">
+			<h3><a href="#(currentSite.url)/">首页</a></h3>
+		</li>
+		#category_root_list()
+			#for(category : categorys)
+			<li class="nLi on">
+				<h3><a href="#(category.path)">#(category.name)</a></h3>
+			</li>
+			#end
+		#end
+	</ul>
+	<script  type="text/javascript">
+	jQuery("#nav").slide({ type:"menu", titCell:".nLi", targetCell:".sub",effect:"slideDown",delayTime:300,triggerTime:0,returnDefault:true});
+	</script>
+</div>
+<div class="nav-bg-bottom clear"></div>
+<div class="banner">
+	<!-- banner start -->
+	<div id="slideBox" class="slideBox">
+        <div class="hd">
+            <ul>
+            	#slide_list(gid=1)
+                #for(slide : slides)
+	            <li>#(for.index+1)</li>
+                #end
+                #end
+            </ul>
+        </div>
+        <div class="bd">
+            <ul>
+                #slide_list(gid=1)
+                #for(slide : slides)
+                <li><a href="javascript:;" target="_blank"><img src="#(slide.image)" /></a></li>
+                #end
+                #end
+            </ul>
+        </div>
+
+        <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+        <a class="prev" href="javascript:void(0)"></a>
+        <a class="next" href="javascript:void(0)"></a>
+    </div>
+	<!-- banner end -->
+	<script id="jsID" type="text/javascript">
+	jQuery(".slideBox").slide({mainCell:".bd ul",effect:"leftLoop",autoPlay:true,delayTime:1000,interTime:4000});
+	</script>
+</div>
+<div class="blank20 clear"></div>

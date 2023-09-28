@@ -1,0 +1,62 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<html style="font-size: 56.25px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <title>产品中心_我的网站</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="#(tpath)/static/css/style.css" rel="stylesheet">
+    <link href="#(tpath)/static/css/common.css" rel="stylesheet">
+    <script src="#(tpath)/static/js/autofontsize.min.js"></script>
+    <script src="#(tpath)/static/js/jquery.js"></script>
+    <script src="#(tpath)/static/js/clipboard.min.js"></script>
+    <script src="#(tpath)/static/js/common.js"></script>
+</head>
+<body>
+<!-- header start -->
+#include("header.html")
+<!-- header end-->
+<!--位置开始-->
+<section class="cateList"> <span class="goBack iconbef" id="goBack"></span>
+    <h3>新闻动态<s class="iconn" style="display: inline;"></s></h3>
+    <!--栏目分类开始-->
+    <div class="box">
+        #category_children_list(categoryId=1102)
+        #for(category : categorys)
+        <a href="#(category.path)" title="#(category.name)">#(category.name)</a>
+        #end
+        #end
+    </div>
+    <!--栏目分类结束-->
+</section>
+
+<!--位置结束-->
+<!--文章列表开始-->
+#content_page(categoryId = currentCategory.id,pageNumber = pageNumber,pageSize = 5)
+<section class="content newsList">
+    <ul class="list-loop list clearfix">
+        #for(content : contentPage.list)
+        <li class="loop item"><a href="#(content.path)" title="#(content.title)"><img src="#(content.ico)" alt="#(content.title)">
+            <h3 class="tit">#(content.title)</h3>
+            <p class="txt">#(abbreviate(content.text,45,'...'))</p>
+        </a></li>
+        #end
+    </ul>
+    <!-- page start -->
+    #page(pageNumber = contentPage.pageNumber,totalPages = contentPage.totalPage,pattern = currentCategory.path+"?pageNumber=")
+    #include("page.html")
+    #end
+    <!-- page end -->
+</section>
+#end
+<!--文章列表结束-->
+<div id="returntop" class="icon hidden"></div>
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->
+</body>
+</html>

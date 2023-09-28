@@ -1,0 +1,66 @@
+<!-- header start -->
+#include("header.html")
+<!-- header end -->
+	<!--nav end-->
+<div class="iban" style="height:300px;">
+<div class="banner minBanner" id="banner" >
+        <ul class="list">
+		#slide_list(count=3,gid=2)
+		#for(slide : slides)
+            <li class="item" style="background:url(#(slide.image)) center top no-repeat;"></li>
+		#end
+		#end
+        </ul>
+  <div class="tip"></div>
+        <div class="clear"></div>
+    </div>
+  </div>
+ 
+
+	<!--banner end-->
+	<div class="submian">
+      <div class="flower"></div>
+      <div class="flower3"></div>
+      <div class="w">
+		<!-- left start -->
+	#include("left.html")
+	<!-- left end -->
+		<!--right-->
+		<div class="subright fr">
+        <div class="sobtitle">
+	<p class="fl">#(currentCategory.name)</p>
+	<div class="sitepath fr">当前位置：#include("position.html")</div>
+	<i></i>
+</div>
+			<div class="produtlist listProduct">			
+	      	  <!--qiehuan 1-->
+	      	  #content_page(categoryId = currentCategory.id,pageNumber = pageNumber,pageSize = 9)		
+		      <div class="tod">
+            <ul class="clearfix">
+                #for(content : contentPage.list)
+                    <li class="item">
+                        <a href="#(content.path)" class="img"><img src="#(content.ico)" alt="#(content.title)"></a>
+                        <p class="wd">
+                          <a title="#(content.title)" href="#(content.path)"><b> #(content.title)</b>
+                            <span>#(abbreviate(content.text,40,''))...
+                      </span></a>
+                        </p>
+                    </li>
+                #end
+                   
+            </ul>
+            <!-- page start -->
+	 	#page(pageNumber = contentPage.pageNumber,totalPages = contentPage.totalPage,pattern = currentCategory.path+"?pageNumber=")
+	       #include("page.html")
+	    #end
+	    <!-- page end -->
+	           </div>#end
+      		</div>
+		</div>
+		<!--right-->
+		<div class="clear"></div>
+        </div>
+	</div>
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->

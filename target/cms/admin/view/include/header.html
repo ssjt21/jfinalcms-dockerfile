@@ -1,0 +1,89 @@
+<header class="main-header">
+    <a href="#(base)/admin/index" class="logo">
+        <span class="logo-mini"><b>数据</b></span>
+        <span class="logo-lg">后台管理系统</span>
+    </a>
+    <nav class="navbar navbar-static-top">
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+		    <span class="sr-only">Toggle navigation</span>
+		</a>
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+            	<li class="dropdown">
+                    <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> #(session.admin_session_site.name) <span class="caret"></span></a>
+                    <ul role="menu" class="dropdown-menu">
+                    	#site_list()
+                    	#for(site : sites)
+                    	#if(session.session_admin.role.isSystem || session.session_admin.role.siteIds.contains(site.id))
+                        <li><a href="javascript:;" onclick="changeSite(#(site.id))">#(site.name)</a></li>
+                        #end
+                        #end
+                        #end
+                    </ul>
+                </li>
+				<li class="dropdown">
+					<a href="#(session.admin_session_site.url)/" target="_blank">
+						网站主页
+					</a>
+				</li>
+				<li class="dropdown">
+					<a href="javascript:;" onclick="clearCache()">
+						清理缓存
+					</a>
+				</li>
+				<li class="dropdown">
+					<a href="#(base)/admin/logout">
+						<i class="fa fa-sign-out">
+						</i>
+						退出登录
+					</a>
+				</li>
+				<li class="dropdown">
+					<a href="javascript:;" id="profile">
+						#(session.session_admin.username)
+						(账号设置)
+					</a>
+				</li>
+			</ul>
+        </div>
+    </nav>
+</header>
+<!-- 账号设置 -->
+<div id="profileModel" class="modal" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content"></div>
+	</div>
+</div>
+<script type="text/javascript">
+//改变站点
+function changeSite(siteId){
+    location.href="#(base)/admin/index?siteId="+siteId;
+}
+//清理缓存
+function clearCache(){
+	$.ajax({
+		url: "#(base)/admin/cache/delete",
+		type: "POST",
+		data: {},
+		dataType: "json",
+		cache: false,
+		success: function(response) {
+			if (response.type == "success") {
+				swal({title:'', text:'操作成功',icon: 'success',button:false,timer: 2000});
+			}else{
+				swal({title:'', text:response.msg,icon: 'error'});
+			}
+		}
+	});
+}
+$().ready(function() {
+	
+	$("#profile").on("click",function(){
+	    $('#profileModel').modal({ remote: "#(base)/admin/profile/edit" });
+	});
+	
+	$("#profileModel").on("hidden.bs.modal", function() {
+	    $(this).removeData("bs.modal");
+	});
+});
+</script>

@@ -1,0 +1,142 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <meta content="width=device-width, minimum-scale=1,initial-scale=1, maximum-scale=1, user-scalable=1;" id="viewport" name="viewport"> 
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"> 
+  <!--离线应用的另一个技巧--> 
+  <meta content="yes" name="apple-mobile-web-app-capable"> 
+  <!--指定的iphone中safari顶端的状态条的样式--> 
+  <meta content="black" name="apple-mobile-web-app-status-bar-style"> 
+  <!--告诉设备忽略将页面中的数字识别为电话号码--> 
+  <meta content="telephone=no" name="format-detection"> 
+  <meta http-equiv="Page-Enter" content="revealTrans(duration=5, transition=2)"> 
+  <meta http-equiv="Page-Exit" content="revealTrans(duration=5, transition=2)"> 
+  <title>学员照片七_我的网站</title> 
+  <meta name="description" content="站点描述"> 
+  <meta name="keywords" content="站点默认关键字"> 
+  <link rel="stylesheet" type="text/css" href="#(tpath)/static/css/basic.css"> 
+  <link rel="stylesheet" type="text/css" href="#(tpath)/static/css/style.css"> 
+  <script type="text/javascript" src="#(tpath)/static/js/jquery.min.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/TouchSlide.1.1.js"></script> 
+  <script src="#(tpath)/static/js/slide-js.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/respond.min.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/respond.src.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/script.js" defer></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/lazy.js"></script> 
+  <script>
+    $(function(){
+$("img").lazyload({
+threshold : 200,
+effect : "fadeIn"
+});
+     })
+</script> 
+  <!--[if lt IE 9]>
+<script>
+document.createElement('video');
+</script>
+<![endif]--> 
+ </head> 
+ <body> 
+  <div id="wrap"> 
+      <!-- header start -->
+ #include("header.html")
+ <!-- header end -->
+   <div class="zp_pagemain"> 
+    <div class="pcbox"> 
+     <div class="kcpage_nav clearfix">
+      <a href="#(currentSite.url)/">主页</a> &gt; 
+      <a href="#(currentCategory.path)">照片</a> &gt; 
+     </div> 
+     <div class="zp_page"> 
+      <div class="zp_page_title">
+       学员照片七
+      </div> 
+      <div class="zp_page_slide"> 
+       <div class="bd"> 
+        <ul> 
+         <li><img src="#(tpath)/static/images/1-161214112333.jpg"></li>
+         <li><img src="#(tpath)/static/images/1-161214105546.jpg"></li>
+         <li><img src="#(tpath)/static/images/1-161214112336-50.jpg"></li>
+         <li><img src="#(tpath)/static/images/1-161214112336-51.jpg"></li> 
+        </ul> 
+       </div> 
+       <a class="prev" href="javascript:void(0)"></a> 
+       <a class="next" href="javascript:void(0)"></a> 
+       <div style="text-align:center;">
+        <span class="pageState"></span>
+       </div> 
+      </div> 
+      <script>jQuery(".zp_page_slide").slide({mainCell:".bd ul",effect:"left",autoPlay:true,});</script> 
+      <div class="hj_banner_phone" id="hj_banner_phone" style="padding-bottom:20px;"> 
+       <div class="bd"> 
+        <ul> 
+         <li>
+          <div>
+           <img src="#(tpath)/static/images/1-161214112333.jpg">
+          </div></li>
+         <li>
+          <div>
+           <img src="#(tpath)/static/images/1-161214105546.jpg">
+          </div></li>
+         <li>
+          <div>
+           <img src="#(tpath)/static/images/1-161214112336-50.jpg">
+          </div></li>
+         <li>
+          <div>
+           <img src="#(tpath)/static/images/1-161214112336-51.jpg">
+          </div></li> 
+        </ul> 
+       </div> 
+       <a href="javascript:;" class="prev"></a> 
+       <a href="javascript:;" class="next"></a> 
+      </div> 
+      <script type="text/javascript">
+                    TouchSlide({
+                        slideCell:"#hj_banner_phone",
+                        mainCell:".bd ul",
+                        effect:"leftLoop",
+                        autoPlay:true //自动播放
+                    });
+                </script> 
+     </div> 
+     <div class="zp_page_bottom"> 
+      <div class="zp_page_bottom_title">
+       其他学员照片
+      </div> 
+      <div class="zp_page_bottom_list clearfix"> 
+       <ul> 
+       #content_list(categoryId="908",count=5)
+       #for(content : contents)
+        <li><a href="#(content.path)" alt="学员照片七" title="学员照片七"><img src="#(tpath)/static/images/1-161214112333-lp.jpg" width="180"></a></li> 
+       #end
+       #end
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <script type="text/javascript">
+    $(function(){
+           $(".tempWrap ul li").each(function(){
+
+                var h=$(this).find("img").height();
+                var h2 = $(this).parent().height();
+                var s=(h2-h)/3;
+                $(this).css("padding-top",s);
+
+           })
+    })
+
+</script> 
+   <!-- footer start -->
+ #include("footer.html")
+ <!-- footer end -->
+  </div>  
+ </body>
+</html>

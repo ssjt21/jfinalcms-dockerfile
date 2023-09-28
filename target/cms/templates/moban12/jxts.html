@@ -1,0 +1,207 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <meta content="width=device-width, minimum-scale=1,initial-scale=1, maximum-scale=1, user-scalable=1;" id="viewport" name="viewport"> 
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"> 
+  <!--离线应用的另一个技巧--> 
+  <meta content="yes" name="apple-mobile-web-app-capable"> 
+  <!--指定的iphone中safari顶端的状态条的样式--> 
+  <meta content="black" name="apple-mobile-web-app-status-bar-style"> 
+  <!--告诉设备忽略将页面中的数字识别为电话号码--> 
+  <meta content="telephone=no" name="format-detection"> 
+  <meta http-equiv="Page-Enter" content="revealTrans(duration=5, transition=2)"> 
+  <meta http-equiv="Page-Exit" content="revealTrans(duration=5, transition=2)"> 
+  <title>教学特色</title> 
+  <meta name="description" content="站点描述"> 
+  <meta name="keywords" content="站点默认关键字"> 
+  <link rel="stylesheet" type="text/css" href="#(tpath)/static/css/basic.css"> 
+  <link rel="stylesheet" type="text/css" href="#(tpath)/static/css/style.css"> 
+  <script type="text/javascript" src="#(tpath)/static/js/jquery.min.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/TouchSlide.1.1.js"></script> 
+  <script src="#(tpath)/static/js/slide-js.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/respond.min.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/respond.src.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/script.js" defer></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/lazy.js"></script> 
+  <script>
+    $(function(){
+$("img").lazyload({
+threshold : 200,
+effect : "fadeIn"
+});
+     })
+</script> 
+  <!--[if lt IE 9]>
+<script>
+document.createElement('video');
+</script>
+<![endif]--> 
+ </head> 
+ <body> 
+  <div id="wrap"> 
+   <!-- header start -->
+ #include("header.html")
+ <!-- header end -->
+   <div class="kc_banner" style="background:url(#(tpath)/static/images/bj12.png) center center no-repeat;"> 
+    <div class="kc_banner_t1">
+     你适合成为
+     <b>职业DJ师</b>吗？
+    </div> 
+    #category(id="905")<a href="#(category.path)" target="_blank" class="kc_banner_t2">#end
+     <div>
+      点这里实现梦想
+     </div></a> 
+   </div> 
+   <div class="pagenav clearfix"> 
+    <div class="pcbox"> 
+     <div class="pagenav_nav clearfix"> 
+      <ul> 
+       #category_children_list(categoryId=currentCategory.parentId)
+      #for(category : categorys)
+       <li #if(category.id==currentCategory.id)class="on"#end><a href="#(category.path)">#(category.name)</a></li> 
+       #end
+      #end  
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="jxts_c1"> 
+    <div class="jxts_num">
+     1
+    </div> 
+    <div class="jxts_t1">
+      最顶级的DJ技术课程设计，终生免费复训，
+     <b>100% 包学会</b> 
+    </div> 
+    <div class="jxts_t2">
+      DJ技术当中最难掌握的是花式搓盘技术和编曲制作课程。在模客培训中心我们100% 保证每一位学亲都可以轻松掌握。 每位学亲学习之后，终生免费 复训。学期之内
+     <b>学不会全额退款</b>。 
+    </div> 
+    <div class="pcbox"> 
+     <div class="jxts_list clearfix"> 
+      <ul> 
+      #content_list(categoryId=currentCategory.id,count=4)
+       #for(content : contents)
+       <li> 
+        <div class="jxts_list_img"> 
+         <a href="javascript:;" class="jxts_list_imgmain"><img src="#(tpath)/static/images/1469419521.png"></a> 
+         <div class="jxts_showbox"> 
+          <div class="jxts_showbox_main"> 
+           <a href="javascript:;" class="jxts_showbox_close">关闭</a> 
+           <div class="jxts_showbox_video">
+            <iframe src="javascript:;" frameborder="0" height="498" width="100%"> </iframe>
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="jxts_list_title">
+         冠军DJ-D-Story教学视频
+        </div> </li>
+         #end
+      #end 
+      </ul> 
+     </div> 
+    </div> 
+    <div class="xian"></div> 
+    <div class="jxts_num">
+     2
+    </div> 
+    <div class="jxts_t1">
+      最高的课程附加价值，
+     <b>100% 改变你的人生</b> 
+    </div> 
+    <div class="jxts_t2">
+      请先了解一下我们在校学亲对模客的评价吧
+     <br>我们定期会和学亲们一起走向社会，传递正能量。
+     <br>我们所有在校的学亲不论贫富，一律相亲相爱，帮助你建立最好的人脉资源。 
+    </div> 
+    <div class="pcbox"> 
+     <div class="jxts_list jxts_list2 clearfix"> 
+      <ul> 
+      #content_list(categoryId=currentCategory.id,count=4)
+       #for(content : contents)
+       <li> 
+        <div class="jxts_list_img"> 
+         <a href="javascript:;" class="jxts_list_imgmain"><img src="#(tpath)/static/images/1469612953.png"></a> 
+         <div class="jxts_showbox"> 
+          <div class="jxts_showbox_main"> 
+           <a href="javascript:;" class="jxts_showbox_close">关闭</a> 
+           <div class="jxts_showbox_video"> 
+            <iframe src="javascript:;" frameborder="0" height="498" width="510"> </iframe> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="jxts_list_title">
+         在校学亲的视频
+        </div> </li>
+        #end
+      #end 
+      </ul> 
+     </div> 
+    </div> 
+    <script>
+            $(function(){
+                $(".jxts_list_imgmain").click(function(){
+                    $(this).siblings(".jxts_showbox").show();
+                })
+                $(".jxts_showbox_close").click(function(){
+                    $(this).parents().parents(".jxts_showbox").hide();
+                })
+            })
+        </script> 
+   </div> 
+   <div class="c2"> 
+    <div class="c2_main"> 
+     <div class="jxts_sz">
+      雄厚的师资力量，100%包你实现梦想
+     </div> 
+     <script src="#(tpath)/static/js/modernizr-custom.min.js"></script> 
+     <script src="#(tpath)/static/js/mislider.min.js"></script> 
+     <script>
+				jQuery(function ($) {
+					var slider = $('.mis-stage').miSlider({
+						stageHeight: 380,
+						slidesOnStage: false,
+						slidePosition: 'center',
+						slideStart: 'mid',
+						slideScaling: 150,
+						offsetV: -5,
+						centerV: true,
+						navButtonsOpacity: 1
+					});
+				});
+			</script> 
+     <div id="wrapper"> 
+      <div class="mis-stage"> 
+       <ol class="mis-slider"> 
+       
+       #content_list(categoryId=currentCategory.id,count=908)
+       #for(content : contents)
+        <li class="mis-slide"> <a href="#(content.path)" class="mis-container"> 
+          <div> 
+           <img src="#(tpath)/static/images/1-1612111H4520-L.png"> 
+           <div class="c2list_tilte">
+            Dj辉仔
+           </div> 
+           <div class="c2list_del">
+            公司主教；2014年师从学习DJ,曾驻场于徐州索玛... 
+           </div> 
+          </div> </a> </li> 
+        #end 
+         #end
+       </ol>
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- footer start -->
+ #include("footer.html")
+ <!-- footer end -->
+ </body>
+</html>

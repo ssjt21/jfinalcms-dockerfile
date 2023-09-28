@@ -1,0 +1,96 @@
+<div class="footer" id="footer">
+	<div class="wrap">
+    	<div class="subnav">
+            
+        	<dl class="list">
+            	#category(id=400)<dt><a href="#(category.path)" title="#(category.name)">#(category.name)</a></dt>#end
+                #category_children_list(count=5,categoryId=400)
+                #for(category : categorys)
+                <dd><a href="#(category.path)">#(category.name)</a></dd>
+                #end
+                #end
+               
+                            </dl>
+            
+        	<dl class="list">
+            	#category(id=401)<dt><a href="#(category.path)" title="#(category.name)">#(category.name)</a></dt>#end
+                #category_children_list(count=5,categoryId=401)
+                #for(category : categorys)
+                <dd><a href="#(category.path)">#(category.name)</a></dd>
+                #end
+                #end
+                            </dl>
+            
+        	<dl class="list">
+            	            	#category(id=402)<dt><a href="#(category.path)" title="#(category.name)">#(category.name)</a></dt>#end
+                #category_children_list(count=5,categoryId=402)
+                #for(category : categorys)
+                <dd><a href="#(category.path)">#(category.name)</a></dd>
+                #end
+                #end
+                
+                            </dl>
+            
+        	<dl class="list">
+            	            	#category(id=403)<dt><a href="#(category.path)" title="#(category.name)">#(category.name)</a></dt>#end
+                #category_children_list(count=5,categoryId=403)
+                #for(category : categorys)
+                <dd><a href="#(category.path)">#(category.name)</a></dd>
+                #end
+                #end
+                            </dl>
+            
+        	<dl class="list">
+            	#category(id=404)<dt><a href="#(category.path)" title="#(category.name)">#(category.name)</a></dt>#end
+                #category_children_list(count=5,categoryId=404)
+                #for(category : categorys)
+                <dd><a href="#(category.path)">#(category.name)</a></dd>
+                #end
+                #end
+                            </dl>
+                    </div>
+        <div class="subcode">
+        	<img src="#(currentCompany.weixin)" title="" alt="" />
+            <p>微信公众号</p>
+        </div>
+        <div class="subtel">
+        	<h2>电话：<span  ig-phone>#(currentCompany.phone)</span></h2>
+            <p>地址：#(currentCompany.address)</p>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="bottomer">
+	<div class="wrap">
+    	<p>友情链接：#friend_link_list(count=3,gid=1)#for(friendLink : friendLinks)
+<a href="#(friendLink.url)" target="_blank">#(friendLink.name)</a>
+#end#end</p>
+        <p>本站关键字：关键词1,关键词2,关键词3</p>
+        <div class="pos">
+        	<p>#(currentCompany.name)</p>
+            <p><a href="http://www.miitbeian.gov.cn" target="_blank">#(currentWeb.icp)</a> </p>
+        </div>
+    </div>
+</div>
+<div class="toolbar" id="toolbar">
+	<div class="main">
+    	<dl class="tel">
+        	<dt>咨询热线</dt>
+            <dd ig-phone class="format400" style="font-size:12px;">#(currentCompany.phone)</dd>
+        </dl>
+        <dl class="kf">
+        	<dd><a class="ico-qq" href="tencent://message/?uin=#(currentCompany.qq)&Menu=yes">在线客服</a></dd>
+        </dl>
+        <dl class="code">
+        	<dt><img src="#(currentCompany.weixin)" title="" alt="" /></dt>
+            <dd>手机网站</dd>
+          <dt><img src="#(currentCompany.weixin)" title="" alt="" /></dt>
+            <dd>微信公众号</dd>
+        </dl>
+        <div class="top" id="top"></div>
+    </div>
+    <div class="pointer"></div>
+</div>
+<script src="#(tpath)/static/js/app.js"></script>
+</body>
+</html>

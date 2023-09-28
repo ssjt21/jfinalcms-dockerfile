@@ -1,0 +1,102 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>我的网站</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="order by dede58.com" />
+    <meta name="viewport" content="width=1380">
+    <link href="#(tpath)/static/css/aos.css" rel="stylesheet">
+    <link href="#(tpath)/static/css/style.css" rel="stylesheet">
+    <link href="#(tpath)/static/css/common.css" rel="stylesheet">
+    <script src="#(tpath)/static/js/jquery.js"></script>
+    <script src="#(tpath)/static/js/jquery.superslide.2.1.1.js"></script>
+    <script src="#(tpath)/static/js/common.js"></script>
+</head>
+<body>
+<!-- header start -->
+#include("header.html")
+<!-- header end -->
+<!--内页大图开始-->
+<div class="nybanner" aos="fade-up" aos-easing="ease" aos-duration="700"> <img src="#(tpath)/static/images/nybanner.jpg"/></div>
+<!--内页大图结束-->
+<div class="submian">
+    <div class="w1200 clearfix">
+        <div class="sobtitle"><s class="icon"></s>您的位置：<a href="#(currentSite.url)/">网站首页</a> &gt; <a href="#(currentCategory.path)">网站地图</a></div>
+        <div class="subleft fl">
+            <!--栏目分类开始-->
+            <div class="lefta bor9">
+                <div class="title">
+                    <h2>产品中心</h2>
+                </div>
+                <div class="comt">
+                    <ul>
+                        #category_children_list(categoryId=1101)
+                        #for(category : categorys)
+                        <li><a href="#(category.path)" title="#(category.name)">#(category.name)</a> </li>
+                        #end
+                        #end
+                    </ul>
+                </div>
+            </div>
+            <!--栏目分类结束-->
+            <!--推荐产品开始-->
+            <div class="leftnews bor9">
+                <div class="title"><i>推荐产品</i></div>
+                <div class="leftprocomt clearfix">
+                    <ul>
+                        #content_list(count=4,categoryId=1101)
+                        #for(content : contents)
+                        <li #if(for.index%2==0) style='margin-right:0;' #end> <a href="#(content.path)" title="#(content.title)"><img src="#(content.ico)" alt="#(content.title)">
+                            <p>#(content.title)</p>
+                        </a></li>
+                        #end
+                        #end
+                    </ul>
+                </div>
+            </div>
+            <!--推荐产品结束-->
+            <!--联系我们开始-->
+            <div class="leftnews bor9">
+                <div class="title"><i>联系我们</i></div>
+                <div class="leftcont">
+                    <h2>渔具批发农林牧渔类网站织梦模板(带手机端)</h2>
+                    <span>地址：广东省广州市番禺经济开发区<br>
+          手机：13988888888<br>
+          </span>
+                    <p>咨询热线<i>+86 0000 88888</i></p>
+                </div>
+            </div>
+            <!--联系我们结束-->
+        </div>
+        <div class="subright fr">
+            <div class="aboutlist">
+                <!--网站地图开始-->
+                #category_root_list(count=7)
+                #for(category : categorys)
+                <dl class="sitemap">
+                    <dt><a href="#(category.path)" title="#(category.name)">#(category.name)</a></dt>
+                    <dd>
+                        #category_children_list(categoryId=category.id)
+                        #for(categoryItem : categorys)
+                        <a href="#(categoryItem.path)" title="#(categoryItem.name)">#(categoryItem.name)</a>
+                        #end
+                        #end
+                    </dd>
+                </dl>
+                #end
+                #end
+                <!--网站地图结束-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->
+</body>
+</html>

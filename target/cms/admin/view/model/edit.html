@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- 公共页面 -->
+	#include("../include/common.html")
+	<!-- 公共页面 /-->
+</head>
+<body class="hold-transition skin-purple sidebar-mini">
+    <div class="wrapper">
+        <!-- 页面头部 -->
+        #include("../include/header.html")
+        <!-- 页面头部 /-->
+        <!-- 导航侧栏 -->
+        #include("../include/menu.html")
+        <!-- 导航侧栏 /-->
+        <!-- 内容区域 -->
+        <div class="content-wrapper" id="contentDiv">
+            <!-- 正文区域 -->
+            <section class="content">
+            	<form id="inputForm" action="#(base)/admin/model/update" method="post">
+           		<input type="hidden" name="id" value="#(model.id)" />
+				<!--表单信息-->
+                <div class="panel panel-default" style="padding-bottom: 10px;">
+                    <div class="panel-heading">模型信息</div>
+                    <div class="row data-type">
+                        <div class="col-md-2 title">名称</div>
+                        <div class="col-md-10 data">
+                            <input type="text" class="form-control" placeholder="名称" name="name" value="#(model.name)">
+                        </div>
+                        <div class="col-md-2 title">类型</div>
+                        <div class="col-md-10 data">
+                            <div class="form-group form-inline">
+                                <div class="radio"><label><input type="radio" name="type" value="0" #if(model.type==0) checked #end> 单页</label></div>
+                                <div class="radio"><label><input type="radio" name="type" value="1" #if(model.type==1) checked #end> 列表</label></div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 title">列表模板</div>
+                        <div class="col-md-10 data">
+                            <input type="text" class="form-control" placeholder="例如：news_list.html。" name="listTemplate" value="#(model.listTemplate)">
+                        </div>
+                        <div class="col-md-2 title">详情模板</div>
+                        <div class="col-md-10 data">
+                            <input type="text" class="form-control" placeholder="例如：news_detail.html。" name="detailTemplate" value="#(model.detailTemplate)">
+                        </div>
+                        <div class="col-md-2 title">状态</div>
+                        <div class="col-md-10 data">
+                            <div class="form-group form-inline">
+                                <div class="radio"><label><input type="radio" name="status" value="1" #if(model.status==1) checked #end> 启用</label></div>
+                                <div class="radio"><label><input type="radio" name="status" value="0" #if(model.status==0) checked #end> 禁用</label></div>
+                            </div>
+                        </div>
+                    </div>
+	                <!--工具栏-->
+	                <div class="box-tools text-center">
+	                    <button type="submit" class="btn bg-maroon">保存</button>
+	                    <button type="button" class="btn bg-default" onclick="history.back(-1);">返回</button>
+	                </div>
+	                <!--工具栏/-->
+                </div>
+                <!--表单信息/-->
+                </form>
+            </section>
+            <!-- 正文区域 /-->
+        </div>
+        <!-- 内容区域 /-->
+        <!-- 底部导航 -->
+        #include("../include/footer.html")
+        <!-- 底部导航 /-->
+    </div>
+</body>
+</html>
+<!---->
+<script>
+ $(document).ready(function() {
+     // 激活导航位置
+     setSidebarActive("admin-model");
+ });
+</script>
+<script type="text/javascript">
+$().ready(function() {
+
+	var $inputForm = $("#inputForm");
+	
+	// 表单验证
+	$inputForm.validate({
+		rules: {
+			name: "required",
+			type: "required"
+		}
+	});
+
+});
+</script>

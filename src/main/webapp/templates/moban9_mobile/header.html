@@ -1,0 +1,34 @@
+<!--顶部开始-->
+<header id="top_main" class="header">
+    <div id="top" class="clearfix"><a class="logo" href="#(currentSite.url)/" title="我的网站">
+        <img src="#(tpath)/static/images/logo.png" alt="我的网站"></a>
+        <div class="topsearch" id="topsearch"><span class="btn_search icon"></span></div>
+        <!--搜索栏开始-->
+        <div class="tsearch hidden" id="tsearch">
+            <form role="search" action="#(currentSite.url)/search">
+                <input class="txt" type="text" name="keyword" value="请输入关键字" onfocus="if(this.value==defaultValue)this.value=''">
+                <input class="btn icon" type="submit" value="" name="submit">
+            </form>
+        </div>
+        <!--搜索栏结束-->
+        <div class="btn_close_main hidden" style="display: none;"><a class="btn_close icon"></a></div>
+        <div id="nav" class="cur">
+            <p class="nav icon"></p>
+        </div>
+    </div>
+</header>
+<!--顶部结束-->
+<!--右侧导航开始-->
+<nav class="subNav trans" id="subNav">
+    <div class="subNavCon trans">
+        <ul class="clearfix">
+            <li><a href="#(currentSite.url)/">网站首页</a></li>
+            #category_root_list(count=7)
+            #for(category : categorys)
+            <li><a href="#(category.path)" title="#(category.name)">#(category.name)</a></li>
+            #end
+            #end
+        </ul>
+    </div>
+</nav>
+<!--右侧导航结束-->

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- 公共页面 -->
+	#include("../include/common.html")
+	<!-- 公共页面 /-->
+</head>
+<body class="hold-transition skin-purple sidebar-mini">
+    <div class="wrapper">
+        <!-- 页面头部 -->
+        #include("../include/header.html")
+        <!-- 页面头部 /-->
+        <!-- 导航侧栏 -->
+        #include("../include/menu.html")
+        <!-- 导航侧栏 /-->
+        <!-- 内容区域 -->
+        <div class="content-wrapper" id="contentDiv">
+            <!-- 正文区域 -->
+            <section class="content">
+       			<form id="inputForm">
+   	        	<div class="box-body">
+	            	<!--tab页-->
+		            <div class="nav-tabs-custom">
+		                <!--tab头-->
+		                <ul class="nav nav-tabs">
+		                    <li class="active"><a href="#tab-pic" data-toggle="tab">图片水印</a></li>
+		                </ul>
+		                <!--tab头/-->
+		                <!--tab内容-->
+		                <div class="tab-content">
+		                    <div class="tab-pane active" id="tab-basic">
+			                    <div class="row data-type">
+									<div class="col-md-2 title">网站模式</div>
+									<div class="col-md-10 data">
+										<div class="form-group form-inline">
+											<div class="radio"><label><input type="radio" name="siteModel" value="0" #if(config.siteModel==0) checked #end> 动态</label></div>
+											<div class="radio"><label><input type="radio" name="siteModel" value="1" #if(config.siteModel==1) checked #end> 伪静态</label></div>
+											<div class="radio"><label><input type="radio" name="siteModel" value="2" #if(config.siteModel==2) checked #end> 静态</label></div>
+										</div>
+									</div>
+			                        <div class="col-md-2 title">是否开启水印</div>
+		                            <div class="col-md-10 data">
+		                                <div class="form-group form-inline">
+		                                    <div class="radio"><label><input type="radio" name="isWatermarkEnabled" value="true" #if(config.isWatermarkEnabled) checked #end> 是</label></div>
+		                                    <div class="radio"><label><input type="radio" name="isWatermarkEnabled" value="false" #if(!config.isWatermarkEnabled) checked #end> 否</label></div>
+		                                </div>
+		                            </div>
+		                            <div class="col-md-2 title">水印图片</div>
+				                    <div class="col-md-10 data">
+				                        <input type="text" class="form-control" placeholder="水印图片" name="watermarkImage" value="#(config.watermarkImage)">
+				                    </div>
+				                    <div class="col-md-2 title">水印位置</div>
+			                        <div class="col-md-10 data">
+			                            <select class="form-control" name="watermarkPosition">
+					                       <option value="no" #if(config.watermarkPosition=='no') selected #end>无</option>
+		                                    <option value="topLeft" #if(config.watermarkPosition=='topLeft') selected #end>左上</option>
+		                                    <option value="topRight" #if(config.watermarkPosition=='topRight') selected #end>右上</option>
+		                                    <option value="center" #if(config.watermarkPosition=='center') selected #end>居中</option>
+		                                    <option value="bottomLeft" #if(config.watermarkPosition=='bottomLeft') selected #end>左下</option>
+		                                    <option value="bottomRight" #if(config.watermarkPosition=='bottomRight') selected #end>右下</option>
+					                    </select>
+			                        </div>
+			                        <div class="col-md-2 title">是否开启缓存</div>
+		                            <div class="col-md-10 data">
+		                                <div class="form-group form-inline">
+		                                    <div class="radio"><label><input type="radio" name="isCacheEnabled" value="true" #if(config.isCacheEnabled) checked #end> 是</label></div>
+		                                    <div class="radio"><label><input type="radio" name="isCacheEnabled" value="false" #if(!config.isCacheEnabled) checked #end> 否</label></div>
+		                                </div>
+		                            </div>
+			                    </div>
+		                    </div>
+			                <!--工具栏-->
+			                <div class="box-tools text-center">
+			                    <button type="submit" class="btn bg-maroon">保存</button>
+			                    <button type="button" class="btn bg-default" onclick="history.back(-1);">返回</button>
+			                </div>
+			                <!--工具栏/-->
+	                	</div>
+	                	<!--tab内容/-->
+	                </div>
+	                <!--tab页/-->
+               	</div>
+              	</form>
+            </section>
+            <!-- 正文区域 /-->
+        </div>
+        <!-- 内容区域 /-->
+        <!-- 底部导航 -->
+        #include("../include/footer.html")
+        <!-- 底部导航 /-->
+    </div>
+</body>
+</html>
+<!---->
+<script>
+ $(document).ready(function() {
+     // 激活导航位置
+     setSidebarActive("admin-setup");
+ });
+</script>
+<script type="text/javascript">
+$().ready(function() {
+
+	var $inputForm = $("#inputForm");
+	
+	$("#inputForm").submit( function() {
+		$.ajax({
+	        url: "#(base)/admin/setup/update",
+	        type: "POST",
+	        data: $("#inputForm").serialize(),
+	        dataType: "json",
+	        cache: false,
+	        success: function(response) {
+	            if (response.type == "success") {
+	            	swal({title:'', text:'操作成功',icon: 'success'});
+	            }else{
+	                swal({title:'', text:response.msg,icon: 'error'});
+	            }
+	        }
+	    });
+		return false;
+	});
+
+});
+</script>

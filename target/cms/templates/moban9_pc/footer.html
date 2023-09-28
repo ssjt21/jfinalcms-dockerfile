@@ -1,0 +1,93 @@
+<!--页尾开始-->
+<div class="footer">
+    <div class="w1200 clearfix" aos="fade-up" aos-easing="ease" aos-duration="700">
+        <!--友情链接开始-->
+        <div class="links"> <span>友情链接：</span>
+            #friend_link_list()
+            #for(friendLink : friendLinks)
+            <a href='#(friendLink.url)' target='_blank'>#(friendLink.name)</a>
+            #end
+            #end
+        </div>
+        <!--友情链接结束-->
+        <!--联系方式开始-->
+        <div class="contact tel fl">
+            <div class="ewm fl"><img src="#(tpath)/static/images/erweima.png"/></div>
+            <div class="contact_info fl">
+                <p class="p1">咨询热线:</p>
+                <p class="tel"></p>
+                <div class="line"></div>
+                <p class="p2">邮箱：‬</p>
+                <p class="p1">手　机：</p>
+            </div>
+        </div>
+        <!--联系方式结束-->
+        <!--底部导航开始-->
+        <div class="bNav fr">
+            <!--产品分类开始-->
+            #category(id="1101")
+            <dl class="item">
+                <dt><a href="#(category.path)" title="#(category.name)">#(category.name)</a></dt>
+                #category_children_list(categoryId=category.id)
+                #for(categoryItem : categorys)
+                <dd><a href="#(categoryItem.path)" title="#(categoryItem.name)">#(categoryItem.name)</a></dd>
+                #end
+                #end
+            </dl>
+            #end
+            #category(id="1102")
+            <dl class="item">
+                <dt><a href="#(category.path)" title="#(category.name)">#(category.name)</a></dt>
+                #category_children_list(categoryId=category.id)
+                #for(categoryItem : categorys)
+                <dd><a href="#(categoryItem.path)" title="#(categoryItem.name)">#(categoryItem.name)</a></dd>
+                #end
+                #end
+            </dl>
+            #end
+            #category(id="1103")
+            <dl class="item">
+                <dt><a href="#(category.path)" title="#(category.name)">#(category.name)</a></dt>
+                #category_children_list(categoryId=category.id)
+                #for(categoryItem : categorys)
+                <dd><a href="#(categoryItem.path)" title="#(categoryItem.name)">#(categoryItem.name)</a></dd>
+                #end
+                #end
+            </dl>
+            #end
+            <!--产品分类结束-->
+        </div>
+        <!--底部导航结束-->
+    </div>
+</div>
+<!--页尾结束-->
+<!--版权开始-->
+<div class="copyright">
+    <div class="w1200">
+        <p class="copyright fl">Copyright &copy; 2012-2021 JreCms. 地址：　备案号：<a href="http://www.miitbeian.gov.cn/"  target="_blank" title=""></a></p>
+        <p class="fr">技术支持：<a href="http://www.jrecms.com/" target="_blank" title="JreCms">JreCms</a></p>
+    </div>
+</div>
+<!--版权结束-->
+<!--浮动客服开始-->
+<dl class="toolbar" id="toolbar">
+    <dd><a class="slide tel slide-tel" href="javascritp:void(0);" title="咨询热线"><i><span></span></i></a></dd>
+    <dd><a href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes" title="在线QQ"><i class="qq"><span></span></i></a></dd>
+    <dd><i class="code"><span></span></i>
+        <ul class="pop pop-code">
+            <li><img src="#(tpath)/static/images/erweima.png"/>
+                <h3><b>微信号：</b>微信二维码</h3>
+            </li>
+        </ul>
+    </dd>
+    <dd> <a href="javascript:;"><i id="top" class="top"><span></span></i></a></dd>
+</dl>
+<!--浮动客服结束-->
+<script src="#(tpath)/static/js/aos.js"></script>
+<script src="#(tpath)/static/js/app.js"></script>
+<script type="text/javascript">
+    AOS.init({
+        easing: 'ease-out-back',
+        duration: 1000
+    });
+</script>

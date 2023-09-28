@@ -1,0 +1,38 @@
+<!-- header start -->
+#include("header.html")
+<!-- header end -->
+<div class="iban" style="height:300px;">
+<div class="banner minBanner" id="banner" >
+        <ul class="list">
+		#slide_list(count=3,gid=2)
+		#for(slide : slides)
+            <li class="item" style="background:url(#(slide.image)) center top no-repeat;"></li>
+		#end
+		#end
+        </ul>
+        <div class="clear"></div>
+    </div>
+  <div class="tip s"></div>
+  </div>
+
+
+	<!--banner end-->
+	<div class="submian w">
+		<!-- left start -->
+		#include("left.html")
+		<!-- left end -->
+		<!--right-->
+		<div class="subright fr">
+        <div class="sobtitle" id="sobtitle">
+	<p class="fl">#(currentCategory.name)</p>
+	<div class="sitepath fr">当前位置：#include("position.html")</div>
+	<i></i>
+</div>
+			<div class="aboutlist">#(currentCategory.introduction)</div>
+		</div>
+		<!--right-->
+		<div class="clear"></div>
+	</div>
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->

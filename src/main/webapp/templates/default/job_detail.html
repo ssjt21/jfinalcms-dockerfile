@@ -1,0 +1,51 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<title>JreCms-永久开源免费的JAVA企业网站开发建设管理系统</title>
+	<meta name="keywords" content="cms,免费cms,开源cms,企业cms,建站cms">
+	<meta name="description" content="JreCms是一套全新内核且永久开源免费的JAVA企业网站开发建设管理系统，是一套高效、简洁、 强悍的可免费商用的JAVA CMS源码，能够满足各类企业网站开发建设的需要。系统采用简单到想哭的模板标签，只要懂HTML就可快速开发企业网站。官方提供了大量网站模板免费下载和使用，将致力于为广大开发者和企业提供最佳的网站开发建设解决方案。">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,shrink-to-fit=no">
+	<link rel="stylesheet" href="#(tpath)/static/bootstrap/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="#(tpath)/static/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="#(tpath)/static/css/aoyun.css?v=v1.3.5" >
+	<link rel="stylesheet" href="#(tpath)/static/swiper-4.3.5/css/swiper.min.css">
+	<link rel="stylesheet" href="#(tpath)/static/css/animate.css">
+	<script src="#(tpath)/static/js/jquery-1.12.4.min.js" ></script>
+</head>
+<body>
+<!-- header start -->
+#include("header.html")
+<!-- header end -->
+
+<!-- top start -->
+#include("top.html")
+<!-- top end -->
+
+<div class="container pages">
+
+	<!-- position start -->
+	#include("position.html")
+	<!-- position end -->
+     
+    <h2 class="text-center fs-sm-28 fs-24">#(currentContent.title)</h2>
+    <div class="text-center border-bottom text-secondary pb-2 mb-3">
+    	  时间：#date(currentContent.createDate,'yyyy-MM-dd')&nbsp;&nbsp;&nbsp;访问量：<script src="#(currentSite.url)/content/visits?id=#(currentContent.id)"></script>
+    </div>
+	<div class="content mb-3">#(currentContent.introduction)</div>
+	<div class="text-secondary lh-2">
+		<p>上一篇：#if(currentContent.lastContent??)<a href="#(currentContent.lastContent.path)">#(abbreviate(currentContent.lastContent.title,15,''))</a>#else无#end</p>
+		<p>下一篇：#if(currentContent.nextContent??)<a href="#(currentContent.nextContent.path)">#(abbreviate(currentContent.nextContent.title,15,''))</a>#else无#end</p>
+	</div>
+	
+</div>
+
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->
+
+</body>
+</html>

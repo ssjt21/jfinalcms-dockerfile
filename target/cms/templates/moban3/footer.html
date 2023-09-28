@@ -1,0 +1,74 @@
+<div class="footer clearfix" id="footer">
+	<div class="w">
+      <div class="fl">
+        <p class="ilink clearfix"><span class="s">友情链接<b>LINK </b></span>
+          #friend_link_list(count=3,gid=1)
+          #for(friendLink : friendLinks)
+		  <a href="#(friendLink.url)" target="_blank">#(friendLink.name)</a> 
+		  #end
+		  #end
+		</p>
+        <p class="keywords"><span>热门关键词：</span>关键词1,关键词2,关键词3</p>
+     	<p class="subnav">
+                <a href="/" title="网站首页">网站首页</a>
+				#category_root_list(count=10)
+	        	#for(category : categorys)
+                 <a href="#(category.path)" title="#(category.name)">#(category.name)</a>
+				 #end
+				#end
+
+                            </p>
+        <div class="copyright clearfix">
+            <p>版权所有：#(currentCompany.name)  电话：#(currentCompany.mobile)<br/>
+地址：#(currentCompany.address)</p>
+            <p> <a href="http://www.miitbeian.gov.cn" target="_blank">#(currentWeb.icp)</a></p>
+        </div>
+      </div>
+      <div class="fr">
+      	<div class="go_top s" id="goTop1"></div>
+        <div class="subtel">
+        	<span class="s">咨询热线</span>
+          <p ig-phone>#(currentCompany.mobile)</p>
+        </div>
+        <div class="searcher" id="searcher">
+		<form action="#(currentSite.url)/search"  method="get">
+		<button type="submit" class="submit  s">搜索</button>					
+         <input type="text" class="txt s" value="" placeholder="请输入关键词" name="keyword"  id="SearchTxt" />
+		</form>
+   	</div>
+      </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+<dl class="toolbar" id="toolbar">
+	<dd>
+        <a class="slide qq slide-qq" href="tencent://message/?uin=#(currentCompany.qq)&Menu=yes">在线QQ</a>
+    </dd>
+    <dd>
+    	<i class="tell"></i>
+        <ul class="pop pop-tel">
+        	<li class="o"></li>
+            <li class="icon">咨询热线</li>
+            <li class="item" ig-phone>#(currentCompany.mobile)</li>
+        </ul>
+    </dd>
+    <dd>
+    	<i class="code"></i>
+        <ul class="pop pop-code">
+        	<li class="o"></li>
+            <li>
+            	<img src="#(currentCompany.weixin)" />
+                <h3>手机二维码</h3>
+            </li>
+        </ul>
+    </dd>
+    <dd>
+    	<i id="goTop" class="top"></i>
+    </dd>
+
+</dl>
+<script src="#(tpath)/static/js/app.js"></script>
+</body>
+</html>

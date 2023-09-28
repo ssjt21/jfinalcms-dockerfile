@@ -1,0 +1,25 @@
+<!-- 分页 -->
+#if(totalPages>1)  
+   <nav aria-label="page navigation" class="my-4">
+     <div class="pagination justify-content-center">
+     	<a class="page-item page-link" href="#(pattern)1">首页</a>
+     	#if(hasPrevious)
+     	<a class="page-item page-link" href="#(pattern)#(previousPageNumber)">上一页</a>
+     	#end
+     	#for(segmentPageNumber : segment)
+        #if(segmentPageNumber != pageNumber)
+            <a href="#(pattern)#(segmentPageNumber)" class="page-item page-link">#(segmentPageNumber)</a>
+        #else
+            <a href="javascript:;" class="page-item page-link">#(segmentPageNumber)</a>
+        #end
+    	#end
+      	<!-- 数字条，小屏幕时自动隐藏-->
+      	#if(hasNext)
+      	<a class="page-item page-link" href="#(pattern)#(nextPageNumber)">下一页</a>
+      	#end
+      	<a class="page-item page-link" href="#(pattern)#(totalPages)">尾页</a>
+     </div>
+   </nav>	
+#else
+   	<!-- <div class="text-center my-5 text-secondary">本分类下无任何数据！</div> -->
+#end

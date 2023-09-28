@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- 公共页面 -->
+	#include("../include/common.html")
+	<!-- 公共页面 /-->
+</head>
+<body class="hold-transition skin-purple sidebar-mini">
+    <div class="wrapper">
+        <!-- 页面头部 -->
+        #include("../include/header.html")
+        <!-- 页面头部 /-->
+        <!-- 导航侧栏 -->
+        #include("../include/menu.html")
+        <!-- 导航侧栏 /-->
+        <!-- 内容区域 -->
+        <div class="content-wrapper" id="contentDiv">
+            <!-- 正文区域 -->
+            <section class="content">
+       			<form id="inputForm">
+           		<input type="hidden" name="id" value="#(web.id)">
+   	        	<div class="box-body">
+	            	<!--tab页-->
+		            <div class="nav-tabs-custom">
+		                <!--tab头-->
+		                <ul class="nav nav-tabs">
+		                    <li class="active"><a href="#tab-pic" data-toggle="tab">站点信息</a></li>
+		                </ul>
+		                <!--tab头/-->
+		                <!--tab内容-->
+		                <div class="tab-content">
+		                    <div class="tab-pane active" id="tab-basic">
+			                    <div class="row data-type">
+			                        <div class="col-md-2 title">站点标题</div>
+			                        <div class="col-md-10 data">
+			                            <input type="text" class="form-control" placeholder="站点标题" name="title" value="#(web.title)">
+			                        </div>
+			                        <div class="col-md-2 title">站点副标题</div>
+			                        <div class="col-md-10 data">
+			                            <input type="text" class="form-control" placeholder="站点副标题" name="subtitle" value="#(web.subtitle)">
+			                        </div>
+			                        <div class="col-md-2 title" style="height: 170px;">站点LOGO</div>
+			                        <div class="col-md-10 data" style="height: 170px;" type="file">
+			                        	<div class="row" style="margin-left: 0px;margin-right: 0px;">
+				                        	<div class="col-md-3 padding-clear">
+					                            <input type="text" class="form-control" placeholder="站点LOGO" name="logo" value="#(web.logo)">
+				                        	</div>
+				                        	<div class="col-md-2" style="padding-right: 0px;">
+				                        		<div id="filePicker" style="float: right;">选择文件</div>
+				                        	</div>
+			                        	</div>
+			                        	<div class="row" style="margin-left: 0px;margin-right: 0px;">
+			                        		<div class="pic picbox">
+			                        			<dl>
+													<dt><a href="javascript:;"><img src="#(web.logo)" onerror="javascript:this.src='#(base)/static/images/nopic.jpg';" class="preview"></a></dt>
+													<dd>删除</dd>
+												</dl>
+			                   				</div>
+			                        	</div>
+			                        </div>
+			                        <div class="col-md-2 title">站点关键字</div>
+			                        <div class="col-md-10 data">
+			                            <input type="text" class="form-control" placeholder="站点关键字" name="keywords" value="#(web.keywords)">
+			                        </div>
+			                        <div class="col-md-2 title rowHeight2x">站点描述</div>
+			                        <div class="col-md-10 data rowHeight2x">
+			                            <textarea class="form-control" rows="3" placeholder="站点描述" name="description">#(web.description)</textarea>
+			                        </div>
+			                        <div class="col-md-2 title">站点备案</div>
+			                        <div class="col-md-10 data">
+			                            <input type="text" class="form-control" placeholder="站点备案" name="icp" value="#(web.icp)">
+			                        </div>
+									<div class="col-md-2 title">网警备案</div>
+									<div class="col-md-10 data">
+										<input type="text" class="form-control" placeholder="网警备案" name="police" value="#(web.police)">
+									</div>
+			                        <div class="col-md-2 title rowHeight2x">站点统计</div>
+			                        <div class="col-md-10 data rowHeight2x">
+			                            <textarea class="form-control" rows="3" placeholder="站点统计" name="statistical">#(web.statistical)</textarea>
+			                        </div>
+			                        <div class="col-md-2 title rowHeight2x">尾部信息</div>
+			                        <div class="col-md-10 data rowHeight2x">
+			                            <textarea class="form-control" rows="3" placeholder="尾部信息" name="copyright">#(web.copyright)</textarea>
+			                        </div>
+			                    </div>
+		                    </div>
+			                <!--工具栏-->
+			                <div class="box-tools text-center">
+			                    <button type="submit" class="btn bg-maroon">保存</button>
+			                    <button type="button" class="btn bg-default" onclick="history.back(-1);">返回</button>
+			                </div>
+			                <!--工具栏/-->
+	                	</div>
+	                	<!--tab内容/-->
+	                </div>
+	                <!--tab页/-->
+               	</div>
+              	</form>
+            </section>
+            <!-- 正文区域 /-->
+        </div>
+        <!-- 内容区域 /-->
+        <!-- 底部导航 -->
+        #include("../include/footer.html")
+        <!-- 底部导航 /-->
+    </div>
+</body>
+</html>
+<!---->
+<script>
+ $(document).ready(function() {
+     // 激活导航位置
+     setSidebarActive("admin-web");
+ });
+</script>
+<script type="text/javascript">
+$().ready(function() {
+
+	var $inputForm = $("#inputForm");
+	var $filePicker = $("#filePicker");
+	
+	$filePicker.uploader();
+	
+	$("#inputForm").submit( function() {
+		$.ajax({
+	        url: "#(base)/admin/web/update",
+	        type: "POST",
+	        data: $("#inputForm").serialize(),
+	        dataType: "json",
+	        cache: false,
+	        success: function(response) {
+	            if (response.type == "success") {
+	            	swal({title:'', text:'操作成功',icon: 'success'});
+	            }else{
+	                swal({title:'', text:response.msg,icon: 'error'});
+	            }
+	        }
+	    });
+		return false;
+	});
+
+});
+</script>

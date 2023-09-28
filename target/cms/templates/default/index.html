@@ -1,0 +1,155 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<title>JreCms-永久开源免费的JAVA企业网站开发建设管理系统</title>
+	<meta name="keywords" content="cms,免费cms,开源cms,企业cms,建站cms">
+	<meta name="description" content="JreCms是一套全新内核且永久开源免费的JAVA企业网站开发建设管理系统，是一套高效、简洁、 强悍的可免费商用的JAVA CMS源码，能够满足各类企业网站开发建设的需要。系统采用简单到想哭的模板标签，只要懂HTML就可快速开发企业网站。官方提供了大量网站模板免费下载和使用，将致力于为广大开发者和企业提供最佳的网站开发建设解决方案。">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,shrink-to-fit=no">
+	<link rel="stylesheet" href="#(tpath)/static/bootstrap/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="#(tpath)/static/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="#(tpath)/static/css/aoyun.css?v=v1.3.5" >
+	<link rel="stylesheet" href="#(tpath)/static/swiper-4.3.5/css/swiper.min.css">
+	<link rel="stylesheet" href="#(tpath)/static/css/animate.css">
+	<script src="#(tpath)/static/js/jquery-1.12.4.min.js" ></script>
+</head>
+<body>
+<!-- header start -->
+#include("header.html")
+<!-- header end -->
+<!-- 幻灯片 -->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+    	#slide_list(count=5,gid=1)
+    	#for(slide : slides)
+        	<div class="swiper-slide">
+        		<a href="#(slide.image)">
+        			<img src="#(slide.image)" class="d-block w-100" >
+        		</a>
+        		<div class="container">
+			    	<div class="position-absolute text-light" style="top:30%;">
+						<h1 class="fs-20 fs-sm-32 wow slideInUp">#(slide.title)</h1>
+					 	<h4 class="fs-14 fs-sm-20 wow slideInUp">#(slide.subtitle)</h4>
+					</div>
+			    </div>
+        	</div>
+        #end
+        #end
+    </div>
+    <div class="swiper-button-prev d-none d-md-block"></div><!--左箭头-->
+    <div class="swiper-button-next d-none d-md-block"></div><!--右箭头-->
+    <div class="swiper-pagination"></div>
+</div>
+
+<!--产品推荐-->
+#category(id=104)
+<div class="bg-white py-5">
+    <div class="container">
+      	<div class="text-center fs-26 fs-sm-28 text-success wow fadeInDown">#(category.name)</div>
+      	<div class="text-center fs-14 fs-sm-16 mb-4 text-secondary wow fadeInUp" data-wow-delay="1s">- #(category.subname) -</div>
+      
+      <div class="row">
+       #content_list(categoryId=104,count=4)
+       #for(content : contents)
+        <div class="col-12 col-sm-6 col-lg-3 wow zoomIn" data-wow-delay="#(for.index+1)00ms" data-wow-duration="1s">
+              <div class="card">
+                  <div class="card-img-150"><a href="#(content.path)"><img class="card-img-top" src="#(content.ico)" alt="#(content.title)"></a></div>
+                  <div class="card-body">
+                    <h5 class="card-title"><a href="#(content.path)">#(abbreviate(content.title,12,''))</a></h5>
+                    <p class="card-text">
+	                    #if(content.isTop)
+	                		<span class="badge badge-danger">置顶</span>
+	                	#else if(content.isRecommend)
+	                		<span class="badge badge-warning">推荐</span>
+	                	#else if(content.isHeadline)
+	                		<span class="badge badge-info">头条</span>
+	                	#end
+	                	#(abbreviate(content.text,50,''))
+                	</p>
+                  </div>
+               </div>
+         </div>
+        #end
+      	#end
+      </div>
+		<div class="text-center mt-4 wow fadeInDown" data-wow-delay="1s"><h4><a href="#(category.path)" class="text-secondary fs-14 fs-sm-16">查看更多</a></h4></div>
+    </div>
+</div>
+#end
+
+<!-- 关于我们 -->
+#category(id=100)
+<div class="bg-light py-5">
+    <div class="container">
+      	<div class="text-center fs-26 fs-sm-28 text-info wow fadeInDown">#(category.name)</div>
+      	<div class="text-center fs-14 fs-sm-16 mb-4 text-secondary wow fadeInUp" data-wow-delay="1s">- #(category.subname) -</div>
+      	<div class="row text-secondary mb-5 px-3 lh-2 wow fadeInDown" data-wow-delay="500ms" style="text-indent:30px;">
+            #(abbreviate(category.text,442,''))
+      	</div>
+     	<div class="text-center wow fadeInDown" data-wow-delay="1s"><h4><a href="#(category.path)" class="text-secondary fs-14 fs-sm-16">查看更多</a></h4></div>
+    </div>
+</div>
+#end
+
+<!-- 新闻动态 -->
+#category(id=102)
+<div class="bg-white py-5">
+    <div class="container">
+      	<div class="text-center fs-26 fs-sm-28 text-warning wow fadeInDown">#(category.name)</div>
+      	<div class="text-center fs-14 fs-sm-16 mb-5 text-secondary wow fadeInUp" data-wow-delay="1s">- #(category.subname) -</div>
+      
+      <div class="row">
+      	#content_list(categoryId=category.id,count=4)
+       	#for(content : contents)
+            <div class="col-12 col-lg-6 mb-3 wow fadeInUp" data-wow-delay="500ms">
+                <div class="media mb-3">
+                  <div class="media-body">
+                     <h5><a href="#(content.path)" title="#(content.title)">#(abbreviate(content.title,20,''))</a></h5>
+                     <p><a href="#(content.path)" class="text-secondary lh-2">#(abbreviate(content.text,60,'')) #date(content.createDate,'yyyy-MM-dd')</a></p>
+                  </div>
+                </div>
+            </div>
+        #end
+      	#end
+      </div>
+		<div class="text-center wow fadeInDown" data-wow-delay="1s"><h4><a href="#(category.path)" class="text-secondary fs-14 fs-sm-16">查看更多</a></h4></div>
+    </div>
+</div>
+#end
+
+<script src="#(tpath)/static/swiper-4.3.5/js/swiper.min.js"></script>
+<script>        
+  var mySwiper = new Swiper ('.swiper-container', {
+    direction: 'horizontal',
+    loop: true,
+    speed: 1500,
+    autoplay : {
+        delay:3500,
+        disableOnInteraction: false
+     },
+     
+    
+    // 如果需要分页器
+    pagination: {
+      el: '.swiper-pagination',
+      clickable :true,
+    },
+    
+    // 如果需要前进后退按钮
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+   
+  })        
+</script>
+
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->
+
+</body>
+</html>

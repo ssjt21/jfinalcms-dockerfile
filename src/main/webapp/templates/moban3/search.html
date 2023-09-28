@@ -1,0 +1,52 @@
+<!-- header start -->
+#include("header.html")
+<!-- header end -->
+<div class="iban" style="height:300px;">
+<div class="banner minBanner" id="banner" >
+        <ul class="list">
+		#slide_list(count=3,gid=2)
+		#for(slide : slides) 
+	  	<li><img src="#(slide.image)" alt="#(slide.title)" /></li>
+		#end
+		#end
+        </ul>
+        <div class="clear"></div>
+    </div>
+  <div class="tip s"></div>
+  </div>
+
+
+	<!--banner end-->
+	<div class="submian w">
+		<!-- left start -->
+		#include("left.html")
+		<!-- left end -->
+		<!--right-->
+		<div class="subright fr">
+			<div class="listnews">				
+            #content_page(categoryId = 104,keyword = keyword,pageNumber = pageNumber,pageSize = 10)
+	      		<!--qiehuan 1-->
+                    <ul>
+                    	#for(content : contentPage.list)
+                    	<li>
+                    		<a href="#(content.path)" title="#(content.title)">
+                    			<p>#(abbreviate(content.title,45,''))</p>
+                    			<span>#date(content.publishDate,'yyyy-MM-dd')</span>
+                    		</a>
+                    	</li>
+                       #end
+                    	
+                                        	                      </ul>
+             <!-- page start -->
+	 	#page(pageNumber = contentPage.pageNumber,totalPages = contentPage.totalPage,pattern = currentSite.url+"/search?keyword="+keyword+"&pageNumber=")
+	       #include("page.html")
+	    #end
+	    <!-- page end -->
+	    #end   		</div>
+		</div>
+		<!--right-->
+		<div class="clear"></div>
+	</div>
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->

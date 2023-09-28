@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- 公共页面 -->
+	#include("../../include/common.html")
+	<!-- 公共页面 /-->
+</head>
+<body class="hold-transition skin-purple sidebar-mini">
+    <div class="wrapper">
+        <!-- 页面头部 -->
+        #include("../../include/header.html")
+        <!-- 页面头部 /-->
+        <!-- 导航侧栏 -->
+        #include("../../include/menu.html")
+        <!-- 导航侧栏 /-->
+        <!-- 内容区域 -->
+        <div class="content-wrapper" id="contentDiv">
+            <!-- 正文区域 -->
+            <section class="content">
+            	<form id="inputForm" action="#(base)/admin/model/model_field/save" method="post">
+           		<input type="hidden" name="modelId" id="modelId" value="#(model.id)" />
+				<!--表单信息-->
+                <div class="panel panel-default" style="padding-bottom: 10px;">
+                    <div class="panel-heading">模型字段信息</div>
+                    <div class="row data-type">
+                        <div class="col-md-2 title">模型名称</div>
+                        <div class="col-md-10 data text">
+                            #(model.name)
+                        </div>
+                        <div class="col-md-2 title">字段类型</div>
+                        <div class="col-md-10 data">
+                            <select class="form-control" name="type">
+		                        <option value="">--请选择字段类型--</option>
+							 	<option value="input">input(单行文本)</option>
+							 	<option value="textarea">textarea(多行文本)</option>
+							 	<option value="editor">editor(编辑器)</option>
+							 	<option value="radio">radio(单选按钮)</option>
+							 	<option value="checkbox">checkbox(复选框)</option>
+							 	<option value="file">file(单文件/图片上传</option>
+							 	<option value="multipleFile">multipleFile(多文件/图片上传)</option>
+							 	<option value="select">select(下拉选择框)</option>
+							 	<option value="date">date(日期时间)</option>
+		                    </select>
+                        </div>
+                        <div class="col-md-2 title">字段描述</div>
+                        <div class="col-md-10 data">
+                            <input type="text" class="form-control" placeholder="例如:客户姓名" name="alias" value="">
+                        </div>
+                        <div class="col-md-2 title">字段名称</div>
+                        <div class="col-md-10 data">
+                            <input type="text" class="form-control" placeholder="必须英文字母开头、数字组成。如：khxm" id="name" name="name" value="">
+                        </div>
+                        <div class="col-md-2 title rowHeight2x">选择值</div>
+                        <div class="col-md-10 data rowHeight2x">
+                            <textarea class="form-control" rows="3" placeholder="只在类型为单选或多选时填写有效，多个选项用逗号或回车隔开。" name="value"></textarea>
+                        </div>
+                        <div class="col-md-2 title">排序</div>
+                        <div class="col-md-10 data">
+                            <input type="text" class="form-control" placeholder="排序" name="sort" value="">
+                        </div>
+                    </div>
+	                <!--工具栏-->
+	                <div class="box-tools text-center">
+	                    <button type="submit" class="btn bg-maroon">保存</button>
+	                    <button type="button" class="btn bg-default" onclick="history.back(-1);">返回</button>
+	                </div>
+	                <!--工具栏/-->
+                </div>
+                <!--表单信息/-->
+                </form>
+            </section>
+            <!-- 正文区域 /-->
+        </div>
+        <!-- 内容区域 /-->
+        <!-- 底部导航 -->
+        #include("../../include/footer.html")
+        <!-- 底部导航 /-->
+    </div>
+</body>
+</html>
+<!---->
+<script>
+ $(document).ready(function() {
+     // 激活导航位置
+     setSidebarActive("admin-form");
+ });
+</script>
+<script type="text/javascript">
+$().ready(function() {
+
+	var $inputForm = $("#inputForm");
+	
+	// 表单验证
+	$inputForm.validate({
+		rules: {
+			alias: "required",
+			name: {
+                required: true,
+                pattern: /^[a-zA-Z][a-zA-Z0-9]*$/
+            }
+		},
+        messages: {
+            name: {
+                pattern: "非法字符"
+            }
+        },
+		submitHandler: function(form) {
+			$.ajax({
+				url: "#(base)/admin/model/model_field/checkName",
+				type: "POST",
+				data: {"name":$("#name").val(),"modelId":$("#modelId").val()},
+				dataType: "json",
+				cache: false,
+				success: function(response) {
+					if (response) {
+						form.submit();
+					}else{
+						swal({title:'', text:'字段名称已存在',icon: 'error'});
+					}
+				}
+			});
+			return false;
+		}
+	});
+
+});
+</script>

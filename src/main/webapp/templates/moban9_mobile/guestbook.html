@@ -1,0 +1,107 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<html style="font-size: 56.25px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <title>产品中心_我的网站</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="#(tpath)/static/css/style.css" rel="stylesheet">
+    <link href="#(tpath)/static/css/common.css" rel="stylesheet">
+    <script src="#(tpath)/static/js/autofontsize.min.js"></script>
+    <script src="#(tpath)/static/js/jquery.js"></script>
+    <script src="#(tpath)/static/js/clipboard.min.js"></script>
+    <script src="#(tpath)/static/js/common.js"></script>
+</head>
+<body>
+<!-- header start -->
+#include("header.html")
+<!-- header end-->
+<!--位置开始-->
+<section class="cateList"> <span class="goBack iconbef" id="goBack"></span>
+    <h3>在线留言<s class="iconn"></s></h3>
+    <!--栏目分类开始-->
+
+    <!--栏目分类结束-->
+</section>
+<!--位置结束-->
+<!--单页内容开始-->
+<section class="contactPage">
+    <!--留言表单开始-->
+    <ul class="login">
+        <form class="msgForm form_book" onsubmit="return submsg(this);">
+            <li>
+                <input type="text" name="contact" id="contact" maxlength="20" placeholder="姓名" class="login_input">
+            </li>
+            <li>
+                <input type="text" name="mobile" id="mobile" maxlength="20" placeholder="手机号码" class="login_input">
+            </li>
+            <li>
+                <textarea name="content" id="content" cols="" rows="" placeholder="咨询内容" class="login_textarea"></textarea>
+            </li>
+            <li>
+                <input type="text" name="captcha" id="captcha" maxlength="20" placeholder="验证码" class="login_input" style="width: 50%;float: left;">
+                <img title="点击刷新" style="height:35px;" id="captchaImage" src="#(currentSite.url)/common/captcha/image" onclick="this.src='#(currentSite.url)/common/captcha/image?'+Math.round(Math.random()*10);" />
+            </li>
+            <li>
+                <input class="login_btn common_bg" type="submit" value="提   交" style="margin-top: 15px;">
+            </li>
+        </form>
+    </ul>
+    <!--留言表单结束-->
+</section>
+<!--单页内容结束-->
+<div id="returntop" class="icon hidden"></div>
+<script>
+
+    //ajax提交留言
+    function submsg(obj){
+        if(document.getElementById('contact').value.length == 0)
+        {
+            alert('您的姓名不能为空！');
+            return false;
+        }
+        if(document.getElementById('mobile').value.length == 0)
+        {
+            alert('您的电话不能为空！');
+            return false;
+        }
+        var url='#(currentSite.url)/guestbook/save';
+        var contact=$(obj).find("#contact").val();
+        var mobile=$(obj).find("#mobile").val();
+        var content=$(obj).find("#content").val();
+        var captcha=$(obj).find("#captcha").val();
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            dataType: 'json',
+            data: {
+                contact: contact,
+                mobile: mobile,
+                content: content,
+                captcha: captcha
+            },
+            success: function (response, status) {
+                if(response.type=="success"){
+                    alert("谢谢您的反馈，我们会尽快联系您！");
+                    $(obj)[0].reset();
+                }else{
+                    alert(response.msg);
+                }
+            },
+            error:function(xhr,status,error){
+                alert('返回数据异常！');
+            }
+        });
+        return false;
+    }
+</script>
+<<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->
+</body>
+</html>

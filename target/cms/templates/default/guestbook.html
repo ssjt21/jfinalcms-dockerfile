@@ -1,0 +1,159 @@
+﻿<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<title>JreCms-永久开源免费的JAVA企业网站开发建设管理系统</title>
+	<meta name="keywords" content="cms,免费cms,开源cms,企业cms,建站cms">
+	<meta name="description" content="JreCms是一套全新内核且永久开源免费的JAVA企业网站开发建设管理系统，是一套高效、简洁、 强悍的可免费商用的JAVA CMS源码，能够满足各类企业网站开发建设的需要。系统采用简单到想哭的模板标签，只要懂HTML就可快速开发企业网站。官方提供了大量网站模板免费下载和使用，将致力于为广大开发者和企业提供最佳的网站开发建设解决方案。">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,shrink-to-fit=no">
+	<link rel="stylesheet" href="#(tpath)/static/bootstrap/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="#(tpath)/static/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="#(tpath)/static/css/aoyun.css?v=v1.3.5" >
+	<link rel="stylesheet" href="#(tpath)/static/swiper-4.3.5/css/swiper.min.css">
+	<link rel="stylesheet" href="#(tpath)/static/css/animate.css">
+	<script src="#(tpath)/static/js/jquery-1.12.4.min.js" ></script>
+</head>
+<body>
+<!-- header start -->
+#include("header.html")
+<!-- header end -->
+
+<!-- top start -->
+#include("top.html")
+<!-- top end -->
+
+<div class="container pages">
+
+	<!-- position start -->
+	#include("position.html")
+	<!-- position end -->
+
+   	<h5 class="border-bottom border-info pb-2"><i class="fa fa-sliders" aria-hidden="true"></i> 留言记录</h5>
+	 
+	<!-- 留言记录 -->
+    #sql_page(select = "select * ",from=" from cms_guestbook order by createDate desc",pageNumber = pageNumber,pageSize = 5)
+    #for(record : recordPage.list)
+    <div class="media border-bottom pb-3 pt-3">
+	  <img class="mr-3" src="#(tpath)/static/images/user.png" height="25">
+	  <div class="media-body">
+	    <h5 class="mt-0">#(record.contact)：</h5>
+	    <p>#(record.content)</p>
+	    <p>
+	    	<span class="badge badge-light text-secondary font-weight-normal">#if(record.mobile?? && record.mobile.length()==11)#(record.mobile.substring(1,3))****#(record.mobile.substring(8))#else #(record.mobile??"") #end</span>
+	    	<span class="badge badge-light text-secondary font-weight-normal">#date(record.createDate,'yyyy-MM-dd')</span>
+	    </p>
+	    <div class="media mt-3 border-top-dashed pt-3">
+	      <img class="mr-3" src="#(tpath)/static/images/user.png" height="25">
+	      <div class="media-body">
+	        <h5 class="mt-0">管理员回复：</h5>
+	        <p>#(record.replyContent)</p>
+	        <p><span class="badge badge-light text-secondary font-weight-normal">#date(record.replyDate,'yyyy-MM-dd')</span></p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	#end
+	
+	<!-- page start -->
+ 	#page(pageNumber = recordPage.pageNumber,totalPages = recordPage.totalPage,pattern = currentCategory.path+"?pageNumber=")
+       #include("page.html")
+    #end
+    <!-- page end -->
+    
+ 	#end
+    
+    <!-- 留言表单 -->
+    <div class="row">
+    	<div class="col-lg-3"></div>
+    	<div class="col-12 col-lg-6">
+        	<form class="my-4" onsubmit="return submsg(this);">
+                <div class="form-group">
+                    <label for="contacts">联系人</label>
+                    <div>
+                        <input type="text" name="contact" required id="contact" class="form-control" placeholder="请输入联系人">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mobile">手　机</label>
+                    <div>
+                        <input type="text" name="mobile" required id="mobile" class="form-control" placeholder="请输入联系人手机">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="content" >内　容</label>
+                    <div>
+                        <textarea name="content" id="content" class="form-control" placeholder="请输入留言内容"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="checkcode">验证码</label>
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="text" name="captcha" id="captcha" required class="form-control" placeholder="请输入验证码">
+                        </div>
+                        <div class="col-6">
+                            <img title="点击刷新" style="height:33px;" id="captchaImage" src="#(currentSite.url)/common/captcha/image" onclick="this.src='#(currentSite.url)/common/captcha/image?'+Math.round(Math.random()*10);" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                   <button type="submit" class="btn btn-info mb-2">提交留言</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div> 
+
+</div>
+
+
+<script>
+
+//ajax提交留言
+function submsg(obj){
+  var url='#(currentSite.url)/guestbook/save';
+  var contact=$(obj).find("#contact").val();
+  var mobile=$(obj).find("#mobile").val();
+  var content=$(obj).find("#content").val();
+  var captcha=$(obj).find("#captcha").val();
+  
+  $.ajax({
+    type: 'POST',
+    url: url,
+    dataType: 'json',
+    data: {
+    	contact: contact,
+    	mobile: mobile,
+    	content: content,
+    	captcha: captcha
+    },
+    success: function (response, status) {
+      if(response.type=="success"){
+		 alert("谢谢您的反馈，我们会尽快联系您！");
+		 $(obj)[0].reset(); 
+      }else{
+    	 alert(response.msg);
+      }
+    },
+    error:function(xhr,status,error){
+      alert('返回数据异常！');
+    }
+  });
+  return false;
+}
+</script>
+
+ 
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->
+
+</body>
+</html>

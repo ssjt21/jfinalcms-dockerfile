@@ -1,0 +1,179 @@
+<!-- header start -->
+#include("header.html")
+<!-- header end -->
+<div class="banner" id="banner">
+	<ul class="list">
+     #slide_list(count=3,gid=1)
+	#for(slide : slides)
+     <li><img src="#(slide.image)" alt="#(slide.title)" /></li>
+   	#end
+	#end
+    </ul>
+	<div class="tip"  style="display:none !important; "></div>
+    <div class="prev"></div>
+    <div class="next"></div>
+</div>
+<div class="searcher" id="searcher">
+	<div class="wrap">
+    	<div class="tag">
+        	<h2>植物化妆品——更亲近您的肌肤</h2>
+            <p>Plant cosmetics - more close to your skin</p>
+        </div>
+        <div class="tel" ig-phone>#(currentCompany.phone)</div>
+        <div class="clear"></div>
+         <div class="sos">
+		<form action="#(currentSite.url)/search"  method="get">
+        	<input type="text" class="txt" value="" name="keyword"  placeholder="请输入关键词搜索" maxlength="20" id="SearchTxt" />
+			<button type="submit" class="submit"></button>
+			</form>
+        </div>
+    	<div class="clear"></div>
+    </div>
+</div>
+<div class="ipro">
+    
+	<div class="wrap" id="ipro">
+    	<div class="head">
+        	<h3>PRODUCT <span>series</span></h3>
+            <h2>产品系列</h2>
+        </div>
+        <div class="classify">
+            <ul class="list">
+                #category_children_list(count=3,categoryId=401)
+               #for(category: categorys)
+                <li class="item-#(for.index)">
+                	<a href="#(category.path)">
+                        <div class="img"><img src="#(category.ico)" title="#(category.name)" alt="#(category.name)"><i></i></div>
+                        <h3>#(category.name)</h3>
+                    </a>
+                    <div class="drop">
+                    	<em></em>
+                        <dl >
+                                                    </dl>
+                    </div>
+                </li>
+              #end
+              #end 
+                
+                            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="main">
+        	<dl class="list">
+                #content_list(count=5,categoryId=401)
+      			#for(content : contents)
+            	 <dd class="mini"> <a href="#(content.path)"><img src="#(content.ico)" title="#(abbreviate(content.title,18,''))" alt="#(abbreviate(content.title,18,''))" /><h3>#(abbreviate(content.title,18,''))</h3></a></dd>
+                
+            	<dd class="Original"><a href="#(content.path)"><img src="#(content.ico)" title="#(abbreviate(content.title,18,''))" alt="#(abbreviate(content.title,18,''))" /><h3>#(abbreviate(content.title,18,''))</h3></a></dd>
+                #end
+                #end
+            
+                                <dd class="online"><a href="tencent://message/?uin=#(currentCompany.qq)&Menu=yes">立即咨询</a></dd>
+            </dl>
+            <div class="clear"></div>
+            <div class="tip">
+            	<span></span>
+                <span class="current"></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    </div>
+<div class="icase">
+    
+	<div class="wrap">
+    	<div class="head">
+        	<h3>custome  <span>experience</span></h3>
+            <h2>客户体验</h2>
+        </div>
+        <div class="main">
+        	<dl class="list">
+            	#category(id=403)
+				<dd class="sketch"><a href="#(category.path)"><img src="#(tpath)/static/images/20160730111205_4602.jpg" title="#(category.name)" alt="#(category.name)" /></a></dd>
+                <dd class="sketch"><a href="#(category.path)"><img src="#(tpath)/static/images/case.jpg" title="#(category.name)" alt="#(category.name)" /></a></dd>
+              #end
+			  
+			  #content_list(count=5,categoryId=403)
+      			#for(content : contents)
+                <dd class="item"><a href="#(content.path)">
+                	<img src="#(content.ico)" title="#(abbreviate(content.title,18,''))" alt="#(abbreviate(content.title,18,''))" />
+                    <h3>#(abbreviate(content.title,18,''))</h3>
+                </a></dd>
+               #end
+                #end
+               
+                            </dl>
+            <div class="clear"></div>
+        </div>
+        <div class="more">
+        	#category(id=403)<a href="#(category.path)">+MORE</a>#end
+        </div>
+    </div>
+    </div>
+<div class="iabout">
+    
+	<div class="wrap">
+    	<div class="head">
+        	<h2><em>about <span>us</span></em><span>关于沛诚</span></h2>
+        </div>
+        <div class="sketchmap">
+        	<div class="img">#category(id=404)
+<img src="#(category.image)" />
+#end</div>
+            <div class="inf">
+            	注重自然本草与现代科技结合，研发纯植物精华无伤害的护肤产品——成就现代女性的美丽人生！
+            </div>
+        </div>
+        <div class="info">
+        	
+            <p>　　<strong><span style="color:#006600;">#(currentCompany.name)</span></strong>#category(id=404)
+#(abbreviate(category.text,192,''))......
+#end#category(id=400)<a href="#(category.path)">[+more]</a></p>#end
+                        <img src="#(tpath)/static/images/about.png" title="关于沛诚" alt="关于沛诚" />
+        </div>
+        <div class="clear"></div>
+    </div>
+    </div>
+<div class="iadv">
+	<h2>NEW PRODUCT<br/>SEASON</h2>
+    <h3>你想要的<span>百款新品</span></h3>
+    <a href="tencent://message/?uin=#(currentCompany.qq)&Menu=yes">立即咨询</a>
+</div>
+<div class="inews">
+    
+	<div class="wrap">
+    	<div class="head">
+        	<h3>News <span>information</span></h3>
+            <h2>新闻资讯</h2>
+        </div>
+        <div class="main" id="inews">
+        	<dl class="list">
+            	 #content_list(count=5,categoryId=400)
+      			#for(content : contents)
+                <dd class="item">
+                	<a href="#(content.path)"><img src="#(content.ico)" title="#(content.title)" alt="#(content.title)" /></a>
+                    <div class="inf">
+                    	<h3><a href="#(content.path)" title="#(content.title)">#(abbreviate(content.title,16,''))</a></h3>
+                        <p> #(abbreviate(content.text,46,''))... <a href="#(content.path)">[+more]</a></p>
+                    </div>
+                </dd>
+             #end
+                #end
+               
+                            </dl>
+            <div class="clear"></div>
+        </div>
+        <div class="foot">
+        	<div class="address">地址：#(currentCompany.address) </div>
+            <div class="tag"><b>现在选择我们</b>，选择美丽人生的可能</div>
+            <div class="btn">
+            	<a href="tencent://message/?uin=#(currentCompany.qq)&Menu=yes">立即咨询</a>
+              #category(id=407)<a class='button' href='#(category.path)'>联系我们</a>#end
+            </div>
+            <div class="tel" ig-phone>#(currentCompany.phone)</div>
+        </div>
+    </div>
+    </div>
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->

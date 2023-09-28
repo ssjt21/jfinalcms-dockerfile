@@ -1,0 +1,99 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <meta content="width=device-width, minimum-scale=1,initial-scale=1, maximum-scale=1, user-scalable=1;" id="viewport" name="viewport"> 
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"> 
+  <!--离线应用的另一个技巧--> 
+  <meta content="yes" name="apple-mobile-web-app-capable"> 
+  <!--指定的iphone中safari顶端的状态条的样式--> 
+  <meta content="black" name="apple-mobile-web-app-status-bar-style"> 
+  <!--告诉设备忽略将页面中的数字识别为电话号码--> 
+  <meta content="telephone=no" name="format-detection"> 
+  <meta http-equiv="Page-Enter" content="revealTrans(duration=5, transition=2)"> 
+  <meta http-equiv="Page-Exit" content="revealTrans(duration=5, transition=2)"> 
+  <title>这是一个教学视频_我的网站</title> 
+  <meta name="description" content="站点描述"> 
+  <meta name="keywords" content="站点默认关键字"> 
+  <link rel="stylesheet" type="text/css" href="#(tpath)/static/css/basic.css"> 
+  <link rel="stylesheet" type="text/css" href="#(tpath)/static/css/style.css"> 
+  <script type="text/javascript" src="#(tpath)/static/js/jquery.min.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/TouchSlide.1.1.js"></script> 
+  <script src="#(tpath)/static/js/slide-js.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/respond.min.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/respond.src.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/script.js" defer></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/lazy.js"></script> 
+  <script>
+    $(function(){
+$("img").lazyload({
+threshold : 200,
+effect : "fadeIn"
+});
+     })
+</script> 
+  <!--[if lt IE 9]>
+<script>
+document.createElement('video');
+</script>
+<![endif]--> 
+ </head> 
+ <body> 
+  <div id="wrap"> 
+   <!-- header start -->
+ #include("header.html")
+ <!-- header end -->
+   <div class="wq_page"> 
+    <div class="pcbox"> 
+     <div class="kcpage_nav clearfix">
+      <a href="#(currentSite.url)/">主页</a> &gt; 
+      <a href="#(currentCategory.path)">视频</a> &gt; 
+     </div> 
+     <div class="wq_page_main"> 
+      <div class="wq_page_main_top" style="border:none;"> 
+       <div class="zp_page_title">
+        这是一个教学视频
+       </div> 
+       <div class="kcpage_main_tab">
+         插入视频播放地址 
+        <p> <br> </p> 
+        <p> <br> </p> 
+        <h2 style="text-align:center;"> <strong><span style="font-family:'Microsoft YaHei';font-size:30px;">国 内 高 端 D J 培 训 中 心</span></strong> </h2> 
+        <p> <br> </p> 
+        <p style="text-align:center;"> <span style="line-height:1.5;"> </span></p>
+        <table style="width:100%;" cellpadding="2" cellspacing="0" border="0" class="ke-zeroborder" bordercolor="#000000"> 
+         <tbody> 
+          <tr> 
+           <td> <h3 style="text-align:center;"> 硬件设施和师资力量最高 </h3> <p style="text-align:center;"> <span style="line-height:1.5;">20年资历殿堂教父级DJ老师一对一亲自教学，</span> </p> <p style="text-align:center;"> <span style="line-height:1.5;">每月平均只招15人入学；</span> </p> <br> </td> 
+           <td> <h3 style="text-align:center;"> 100%包学会高级DJ技术 </h3> <p style="text-align:center;"> <span style="line-height:1.5;">入学前签订合同，不论是否有基础，</span> </p> <p style="text-align:center;"> <span style="line-height:1.5;">全部100%保证学员学会高级DJ技术；</span> </p> <br> </td> 
+           <td> <h3 style="text-align:center;"> 100%包找到DJ工作 </h3> <p style="text-align:center;"> <span style="line-height:1.5;">入学前签订合同，考试合格，100%保证学员就业，</span> </p> <p style="text-align:center;"> <span style="line-height:1.5;">找到满意的工作；</span> </p> <br> </td> 
+          </tr> 
+         </tbody> 
+        </table> 
+        <span style="line-height:1.5;"><br> </span> 
+        <p></p> 
+        <p style="text-align:center;"> <span style="line-height:1.5;">梦想其实并不遥远，我们欢迎喜爱DJ事业的年轻朋友加入我们的DJ大家庭</span></p> 
+        #category(id="905")<a href="#(category.path)" target="_blank" class="kcpage_main_btn">我要报名</a> #end
+       </div> 
+      </div> 
+     </div> 
+     <div class="kcpage_main_bottom clearfix"> 
+      <ul> 
+        #content_list(categoryId="900",count=5)
+       #for(content : contents)
+       <li><a href="#(content.path)"><img src="#(tpath)/static/images/1-1612140922430-L.png" width="228" height="136" alt=" 至尊DJ班"></a></li> 
+      	#end
+      	#end
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- footer start -->
+ #include("footer.html")
+ <!-- footer end -->
+ </body>
+</html>

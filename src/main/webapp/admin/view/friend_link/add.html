@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- 公共页面 -->
+	#include("../include/common.html")
+	<!-- 公共页面 /-->
+</head>
+<body class="hold-transition skin-purple sidebar-mini">
+    <div class="wrapper">
+        <!-- 页面头部 -->
+        #include("../include/header.html")
+        <!-- 页面头部 /-->
+        <!-- 导航侧栏 -->
+        #include("../include/menu.html")
+        <!-- 导航侧栏 /-->
+        <!-- 内容区域 -->
+        <div class="content-wrapper" id="contentDiv">
+            <!-- 正文区域 -->
+            <section class="content">
+            	<form id="inputForm" action="save" method="post">
+				<!--表单信息-->
+                <div class="panel panel-default" style="padding-bottom: 10px;">
+                    <div class="panel-heading">友情链接信息</div>
+                    <div class="row data-type">
+                    	<div class="col-md-2 title">分组</div>
+                        <div class="col-md-10 data">
+                            <select class="form-control" name="gid">
+		                       <option value="">新增分组</option>
+								#for(gidItem : gids)
+									<option value="#(gidItem)">分组#(gidItem)</option>
+								#end
+		                    </select>
+                        </div>
+                        <div class="col-md-2 title">名称</div>
+                        <div class="col-md-10 data">
+                            <input type="text" class="form-control" placeholder="名称" name="name" value="">
+                        </div>
+                        <div class="col-md-2 title" style="height: 170px;">图片</div>
+                        <div class="col-md-10 data" style="height: 170px;" type="file">
+                        	<div class="row" style="margin-left: 0px;margin-right: 0px;">
+	                        	<div class="col-md-3 padding-clear">
+		                            <input type="text" class="form-control" placeholder="图片" id="logo" name="logo">
+	                        	</div>
+	                        	<div class="col-md-2" style="padding-right: 0px;">
+	                        		<div id="filePicker" style="float: right;">选择图片</div>
+	                        	</div>
+                        	</div>
+                        	<div class="row" style="margin-left: 0px;margin-right: 0px;">
+                        		<div class="pic picbox">
+                   				</div>
+                        	</div>
+                        </div>
+                        <div class="col-md-2 title">链接地址</div>
+                        <div class="col-md-10 data">
+                            <input type="text" class="form-control" placeholder="链接地址" name="url" value="">
+                        </div>
+                        <div class="col-md-2 title">排序</div>
+                        <div class="col-md-10 data">
+                            <input type="text" class="form-control" placeholder="排序" name="sort" value="">
+                        </div>
+                    </div>
+	                <!--工具栏-->
+	                <div class="box-tools text-center">
+	                    <button type="submit" class="btn bg-maroon">保存</button>
+	                    <button type="button" class="btn bg-default" onclick="history.back(-1);">返回</button>
+	                </div>
+	                <!--工具栏/-->
+                </div>
+                <!--表单信息/-->
+                </form>
+            </section>
+            <!-- 正文区域 /-->
+        </div>
+        <!-- 内容区域 /-->
+        <!-- 底部导航 -->
+        #include("../include/footer.html")
+        <!-- 底部导航 /-->
+    </div>
+</body>
+</html>
+<!---->
+<script>
+ $(document).ready(function() {
+     // 激活导航位置
+     setSidebarActive("admin-friendLink");
+ });
+</script>
+<script type="text/javascript">
+$().ready(function() {
+
+	var $inputForm = $("#inputForm");
+    var $filePicker = $("#filePicker");
+    
+    $filePicker.uploader();
+    
+    // 表单验证
+    $inputForm.validate({
+        rules: {
+            name: "required"
+        }
+    });
+
+});
+</script>

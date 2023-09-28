@@ -1,0 +1,122 @@
+<!-- header start -->
+#include("header.html")
+<!-- header end -->
+<div class="minbanner" id="banner">
+        	<ul class="list">
+            #slide_list(count=3,gid=2)
+			#for(slide : slides)
+                <li><img src="#(slide.image)" border="0" /></li>
+            #end
+			#end
+            </ul>
+</div>
+<div class="kswrap">
+<div class="kn clearfix">
+	<div class="list fl">
+      
+    	<span>新闻动态：</span>
+        <div class="box">
+        	<ul id="newscroll">
+             #content_list(count=5,categoryId=16)
+     		  #for(content : contents) 
+            	<li><a href="#(content.path)" target="_blank">#(abbreviate(content.title,30,''))</a></li>
+              #end
+              #end
+            </ul>
+        </div>
+            </div>
+    <div class="search fr">
+	<form action="#(currentSite.url)/search"  method="get">
+    <input type="text" id="SearchTxt" name="keyword" />
+	<button type="submit" id="Searchs"></button>
+	</form>
+    </div>
+</div>
+</div>
+<div class="page clearfix">
+		<!-- left start -->
+		#include("left.html")
+		<!-- left end -->
+ 		 <div class="right fr">
+				<div class="title4">
+                	<div class="sitepath fr" id="sitepath"><span>当前位置：#include("position.html")</div>
+                    <h3 class="fl">#(currentCategory.name)</h3>
+                </div>
+          <div class="wrap">
+           		<div class="formData" style="font-size:12px;">
+               <form name="formPost" id="formPost" onsubmit="return submsg(this);" method="POST" >
+
+            <table cellpadding="0" cellspacing="0" border="0" width="520" style="margin:0 auto;">
+               <tbody><tr valign="middle" class="item required">
+                   <td height="40" width="100" align="right"><span class="red">*</span><label for="Name">访客姓名：</label></td>
+                   <td width="250"><input type="text" name="contact"  id="Name" model="name"></td>
+                   <td width="160"><div class="tip"></div></td>
+               </tr>
+               <tr valign="middle" class="item required">
+                   <td height="40" align="right"><span class="red">*</span><label for="Phone">联系方式：</label></td>
+                   <td><input type="text" name="mobile"  id="Phone" model="phone"></td>
+                   <td><div class="tip"></div></td>
+               </tr>
+             
+               <tr valign="middle" class="item">
+                   <td height="40" align="right"><label for="Content">留言内容：</label></td>
+                   <td><textarea type="text" name="content"  id="Content"></textarea></td>
+                   <td><div class="tip"></div></td>
+               </tr>
+               <tr valign="middle" class="code">
+                   <td height="40" align="right"><label for="txtImageCode">验证码：</label></td>
+                   <td><input type="text" name="captcha" id="captcha"  maxlength="4" id="txtImageCode" value="">&nbsp;<img title="看不清？请用力点击这里！" id="captchaImage" src="#(currentSite.url)/common/captcha/image" onclick="this.src='#(currentSite.url)/common/captcha/image?'+Math.round(Math.random()*10);" style="height:25px;width:63px;cursor:pointer;"></td>
+                   <td><div class="tip"></div></td>
+               </tr>
+               <tr valign="middle">
+                   <td height="40"> </td>
+                   <td><input type="submit" value="确认提交" class="sub"></td>
+                   <td> </td>
+               </tr>
+            </tbody></table>
+         
+</form>
+
+
+        </div>
+           </div>
+		</div>
+</div>
+<script>
+
+//ajax提交留言
+function submsg(obj){
+  var url='#(currentSite.url)/guestbook/save';
+  var contact=$(obj).find("#contact").val();
+  var mobile=$(obj).find("#mobile").val();
+  var content=$(obj).find("#content").val();
+  var captcha=$(obj).find("#captcha").val();
+  
+  $.ajax({
+    type: 'POST',
+    url: url,
+    dataType: 'json',
+    data: {
+    	contact: contact,
+    	mobile: mobile,
+    	content: content,
+    	captcha: captcha
+    },
+    success: function (response, status) {
+      if(response.type=="success"){
+		 alert("谢谢您的反馈，我们会尽快联系您！");
+		 $(obj)[0].reset(); 
+      }else{
+    	 alert(response.data);
+      }
+    },
+    error:function(xhr,status,error){
+      alert('返回数据异常！');
+    }
+  });
+  return false;
+}
+</script>
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->

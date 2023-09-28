@@ -1,0 +1,71 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<title>JreCms-永久开源免费的JAVA企业网站开发建设管理系统</title>
+	<meta name="keywords" content="cms,免费cms,开源cms,企业cms,建站cms">
+	<meta name="description" content="JreCms是一套全新内核且永久开源免费的JAVA企业网站开发建设管理系统，是一套高效、简洁、 强悍的可免费商用的JAVA CMS源码，能够满足各类企业网站开发建设的需要。系统采用简单到想哭的模板标签，只要懂HTML就可快速开发企业网站。官方提供了大量网站模板免费下载和使用，将致力于为广大开发者和企业提供最佳的网站开发建设解决方案。">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,shrink-to-fit=no">
+	<link rel="stylesheet" href="#(tpath)/static/bootstrap/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="#(tpath)/static/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="#(tpath)/static/css/aoyun.css?v=v1.3.5" >
+	<link rel="stylesheet" href="#(tpath)/static/swiper-4.3.5/css/swiper.min.css">
+	<link rel="stylesheet" href="#(tpath)/static/css/animate.css">
+	<script src="#(tpath)/static/js/jquery-1.12.4.min.js" ></script>
+</head>
+<body>
+<!-- header start -->
+#include("header.html")
+<!-- header end -->
+
+<!-- top start -->
+#include("top.html")
+<!-- top end -->
+
+<div class="container pages">
+
+	<!-- position start -->
+	#include("position.html", position="搜索")
+	<!-- position end -->
+
+     #content_page(categoryId = 104,keyword = keyword,pageNumber = pageNumber,pageSize = 12)
+     <div class="row">
+     	#for(content : contentPage.list)
+            <div class="col-12 col-sm-6 col-lg-3">
+              <div class="card">
+                  <div class="card-img-150"><a href="#(content.path)"><img class="card-img-top" src="#(content.ico)" alt="#(content.title)"></a></div>
+                  <div class="card-body">
+                    <h5 class="card-title"><a href="#(content.path)">#(abbreviate(content.title,12,''))</a></h5>
+                    <p class="card-text">#(abbreviate(content.text,50,''))</p>
+                  </div>
+               </div>
+         	</div>
+        #end
+    </div>
+
+    <!-- page start -->
+ 	#page(pageNumber = contentPage.pageNumber,totalPages = contentPage.totalPage,pattern = currentSite.url+"/search?pageNumber=")
+       #include("page.html")
+    #end
+    <!-- page end -->
+    
+ 	#end
+    
+     <!-- 搜索-->
+     <form class="form-inline mb-5 justify-content-center" action="#(currentSite.url)/search"  method="get">
+		  <div class="form-group mx-sm-3 mb-2">
+		    <input type="text" name="keyword" class="form-control" placeholder="请输入关键字">
+		  </div>
+		  <button type="submit" class="btn btn-info mb-2">搜索</button>
+     </form>
+</div>
+
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->
+
+</body>
+</html>

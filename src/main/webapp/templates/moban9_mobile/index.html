@@ -1,0 +1,303 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<html style="font-size: 56.25px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <title>我的网站移动版</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="#(tpath)/static/css/style.css" rel="stylesheet">
+    <link href="#(tpath)/static/css/common.css" rel="stylesheet">
+    <script src="#(tpath)/static/js/autofontsize.min.js"></script>
+    <script src="#(tpath)/static/js/jquery.js"></script>
+    <script src="#(tpath)/static/js/clipboard.min.js"></script>
+    <script src="#(tpath)/static/js/common.js"></script>
+</head>
+<body>
+<!-- header start -->
+#include("header.html")
+<!-- header end-->
+<!--首页导航开始-->
+<nav class="inav_t">
+    <dl>
+        <dd><a href="#(currentSite.url)/">网站首页</a></dd>
+        #category_root_list(count=7)
+        #for(category : categorys)
+        <dd><a href="#(category.path)" title="#(category.name)">#(category.name)</a></dd>
+        #end
+        #end
+    </dl>
+</nav>
+<!--首页导航结束-->
+<!--幻灯片大图开始-->
+<div id="banner_main">
+    <div id="banner" class="banner" style="opacity: 1;">
+        <ul class="list clearfix" style="width: 1080px;">
+            #slide_list(count=5,gid=2)
+            #for(slide : slides)
+            <li style="width: 360px;"><a href="#(slide.url)"><img src="#(slide.image)" alt="#(slide.title)" style="width: 360px;"></a></li>
+            #end
+            #end
+        </ul>
+        <div class="tip"><span class="cur icon"></span><span class="icon"></span></div>
+        <div class="banner_mask"></div>
+    </div>
+</div>
+<!--幻灯片大图结束-->
+<section class=" index wrapper trans">
+    <!--产品中心开始-->
+    <section id="floor_1_main">
+        <div class="floor_1">
+            <div class="in_title">
+                <p class="entit">PRODUCT</p>
+                <h3 class="tit">产品中心</h3>
+            </div>
+            <div class="cont" id="irepro">
+                <!--产品分类开始-->
+                <div class="top">
+                    #category_children_list(categoryId=1101)
+                    #for(category : categorys)
+                    <h3><a href="#(category.path)" title="#(category.name)">#(category.name)</a></h3>
+                    #end
+                    #end
+                </div>
+                <!--产品分类结束-->
+                <div class="bottom">
+                    <div class="gridlist">
+                        <ul class="list clearfix">
+                            #content_list(count=6,categoryId=1101)
+                            #for(content : contents)
+                            <li class="item"><a href="#(content.path)" title="#(content.title)">
+                                <div class="img"><img src="#(content.ico)" alt="#(content.title)"></div>
+                                <div class="txt">
+                                    <h3>#(content.title)</h3>
+                                </div>
+                            </a></li>
+                            #end
+                            #end
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div></section>
+    <!--产品中心结束-->
+    <!--四大优势开始-->
+    <section id="floor_2_main">
+        <div class="floor_2">
+            <div class="four_odds"> <div class="title">
+                <h3 class="tit">四大产品优势</h3>
+                <p class="subtit">选择某某渔网，您的品质之选！</p>
+            </div>
+                <div class="iadvantage">
+                    <ul class="list clearfix">
+                        <li class="it1"><em></em>
+                            <h3 class="tit">适鱼性强、增产较佳</h3>
+                            <p class="cont">适用于深海、浅海、江河、湖泊、水库、池塘和沟渠的捕捞、养...</p>
+                        </li>
+                        <li class="it2"><em></em>
+                            <h3 class="tit">网结紧固、尺寸准确</h3>
+                            <p class="cont">适用于深海、浅海、江河、湖泊、水库、池塘和沟渠的捕捞、养...</p>
+                        </li>
+                        <li class="it3"><em></em>
+                            <h3 class="tit">结构合理、规格齐全</h3>
+                            <p class="cont">适用于深海、浅海、江河、湖泊、水库、池塘和沟渠的捕捞、养...</p>
+                        </li>
+                        <li class="it4"><em></em>
+                            <h3 class="tit">颜色鲜艳、使用寿命长</h3>
+                            <p class="cont">适用于深海、浅海、江河、湖泊、水库、池塘和沟渠的捕捞、养...</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--四大优势结束-->
+    <!--小banner开始-->
+    <div class="index_slip">
+        <div class="slip">
+            <div class="slip_tit">
+                <h3 class="tit1">严格把关产品质量,打造渔网行业<br>
+                    品牌标杆！</h3>
+            </div>
+            <a class="slip_btn" href="tel:">电话咨询</a></div>
+    </div>
+    <!--小banner结束-->
+    <!--合作案例开始-->
+    #category(id=1103)
+    <section id="floor_3_main">
+        <div class="floor_3">
+            <div class="in_title">
+                <p class="entit">COOPERATION CASE</p>
+                <h3 class="tit">工程案例</h3>
+            </div>
+            <!--推荐内容开始-->
+            <div class="caseList" id="caseShow">
+                <div class="bd">
+                    <ul class="list clearfix">
+                    #content_list(count=3,categoryId=category.id)
+                    #for(content : contents)
+                    <li>
+                        <a href="#(content.path)" title="#(content.title)">
+                            <div class="img"><img src="#(content.ico)" alt="#(content.title)"></div>
+                            <div class="txt">
+                                <h3 class="tit">#(content.title)</h3>
+                            </div>
+                        </a>
+                    </li>
+                    #end
+                    #end
+                    </ul>
+                </div>
+                <div class="hd">
+                    <ul class="iconList">
+                    </ul>
+                </div>
+            </div>
+            <!--推荐内容结束-->
+            <div class="caseShow">
+                <ul class="list clearfix">
+                    #content_list(count=3,categoryId=category.id)
+                    #for(content : contents)
+                    <li><a href="#(content.path)" title="#(content.title)">
+                        <figure class="img"><img src="#(content.ico)" alt="#(content.title)"></figure>
+                        <div class="txt">
+                            <h3 class="tit">#(content.title)</h3>
+                        </div>
+                    </a></li>
+                    #end
+                    #end
+                </ul>
+            </div>
+            <a class="look_more" href="#(category.path)" title="查看更多">查看更多&gt;&gt;</a></div>
+    </section>
+    #end
+    <!--合作案例结束-->
+    <!--服务流程开始-->
+    <section id="floor_4_main">
+        <div class="floor_4">
+            <div class="in_title">
+                <p class="entit">SERVICE PROCESS</p>
+                <h3 class="tit">服务流程</h3>
+            </div>
+            <div class="serviceList">
+                <ul class="list clearfix">
+                    <li class="ita1">
+                        <div class="img"><img src="#(tpath)/static/images/s1.png"></div>
+                        <h3 class="tit">产品报价</h3>
+                        <div class="num"><img src="#(tpath)/static/images/s01.png"></div>
+                    </li>
+                    <li class="ita2">
+                        <div class="img"><img src="#(tpath)/static/images/s2.png"></div>
+                        <h3 class="tit">定金选购</h3>
+                        <div class="num"><img src="#(tpath)/static/images/s02.png"></div>
+                    </li>
+                    <li class="ita3">
+                        <div class="img"><img src="#(tpath)/static/images/s3.png"></div>
+                        <h3 class="tit">产品确认</h3>
+                        <div class="num"><img src="#(tpath)/static/images/s03.png"></div>
+                    </li>
+                    <li class="ita4">
+                        <div class="img"><img src="#(tpath)/static/images/s4.png"></div>
+                        <h3 class="tit">产品装车</h3>
+                        <div class="num"><img src="#(tpath)/static/images/s04.png"></div>
+                    </li>
+                    <li class="ita5">
+                        <div class="img"><img src="#(tpath)/static/images/s5.png"></div>
+                        <h3 class="tit">运输配送</h3>
+                        <div class="num"><img src="#(tpath)/static/images/s05.png"></div>
+                    </li>
+                    <li class="ita6">
+                        <div class="img"><img src="#(tpath)/static/images/s6.png"></div>
+                        <h3 class="tit">交易付款</h3>
+                        <div class="num"><img src="#(tpath)/static/images/s06.png"></div>
+                    </li>
+                    <li class="ita7">
+                        <div class="img"><img src="#(tpath)/static/images/s7.png"></div>
+                        <h3 class="tit">售后服务</h3>
+                        <div class="num"><img src="#(tpath)/static/images/s07.png"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--服务流程结束-->
+    <!--小banner开始-->
+    <div class="index_slip index_slip1">
+        <div class="slip">
+            <div class="slip_tit">
+                <h3 class="tit1">善的物流体系，各种服务配套齐全！<br>
+                    欢迎前来订购！</h3>
+            </div>
+            <a class="slip_btn" href="tel:">电话咨询</a></div>
+    </div>
+    <!--小banner结束-->
+    <!--关于我们开始-->
+    #category(id=1100)
+    <section id="floor_5_main">
+        <div class="floor_5">
+            <div class="in_title">
+                <p class="entit">About Us</p>
+                <h3 class="tit">关于我们</h3>
+            </div>
+            <div class="part1">
+                <div class="video"><img src="#(tpath)/static/images/about.jpg"></div>
+            </div>
+            <div class="part2">
+                <div class="tips">
+                    <div class="item clearfix">
+                        <div class="img"><img src="#(tpath)/static/images/chi.png"></div>
+                        <div class="stit">
+                            <h3 class="tit1">专业生产厂家</h3>
+                            <p class="cont1">16年生产经验，国外进口设备</p>
+                        </div>
+                    </div>
+                    <div class="item clearfix">
+                        <div class="img"><img src="#(tpath)/static/images/chi.png"></div>
+                        <div class="stit">
+                            <h3 class="tit1">优质品牌产品</h3>
+                            <p class="cont1">产品品质优良，多次荣获省部级名牌</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="cont"> #(abbreviate(category.text,100,'...'))</p>
+            </div>
+            <a class="look_more" href="#(category.path)" title="了解详情>>">了解详情&gt;&gt;</a></div>
+    </section>
+    #end
+    <!--关于我们结束-->
+    <!--新闻动态开始-->
+    #category(id=1102)
+    <section id="floor_6_main">
+        <div class="floor_6">
+            <div class="in_title">
+                <p class="entit">News</p>
+                <h3 class="tit">新闻动态</h3>
+            </div>
+            <div class="news">
+                <ul class="list">
+                    #content_list(count=5,categoryId=category.id)
+                    #for(content : contents)
+                    <li><a href="#(content.path)" title="#(content.title)">
+                        <h3 class="tit">#(content.title)</h3>
+                        <p class="time">#date(content.publishDate,'yyyy-MM-dd')</p>
+                    </a></li>
+                    #end
+                    #end
+                </ul>
+                <a class="look_more" href="#(category.path)" title="查看更多">查看更多&gt;&gt;</a> </div>
+        </div>
+    </section>
+    #end
+    <!--新闻动态结束-->
+</section>
+<script type="text/javascript" src="#(tpath)/static/js/touchslide.1.1.js"></script>
+<script type="text/javascript">TouchSlide({ slideCell:"#caseShow",titCell:".hd ul",mainCell:".bd ul", effect:"leftLoop", interTime:"5000", autoPage:true,autoPlay:true});</script>
+<div id="returntop" class="icon hidden"></div>
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->
+</body>
+</html>

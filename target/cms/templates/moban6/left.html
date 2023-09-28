@@ -1,0 +1,40 @@
+<div class="subleft fl">
+  	#if(currentCategory??)
+  	<div class="sidebar">
+      <div class="topclass">
+        <h2>#(currentCategory.name)</h2>
+        <span>#(currentCategory.subname)</span><!-- <h2>网站导航</h2><span>Site navigation</span> -->
+      </div>
+      <dl class="side-menu" id="menu">
+          #category_children_list(count=10,categoryId=currentCategory.id)
+	      #for(category : categorys)
+		  <dd #if(currentCategory?? && (category.id==currentCategory.id || currentCategory.treePath.contains(','+category.id+','))) class="current" #end>
+          	 <a href="#(category.path)" title="#(category.name)" #if(currentCategory?? && (category.id==currentCategory.id || currentCategory.treePath.contains(','+category.id+','))) class="hover" #end>#(category.name)</a>
+          </dd>
+		  #end
+          #end
+                   </dl>
+     <div class="tel1">
+          <p>设计精良<br/>施工规范<br/>养护到位</p>
+        <a href="tencent://message/?uin=#(currentCompany.qq)&Menu=yes" class="zixun" target="_blank">立即咨询</a>
+      </div>
+    </div>
+    #end
+      
+  <!-- contact -->
+  <div class="leftcontact" style="margin-top:20px;">
+		
+		<div class="titlex">
+		<span>联系我们</span>
+		<b>CONTACT</b>
+		</div>
+		<div class="leftcontactcomt">
+				
+                  <strong>#(currentCompany.name)</strong><br />
+联系人：#(currentCompany.contact)<br />
+电话：#(currentCompany.mobile)<br />
+邮箱：#(currentCompany.email) <br />
+地址：#(currentCompany.address)
+			    		</div>
+			</div>
+</div>

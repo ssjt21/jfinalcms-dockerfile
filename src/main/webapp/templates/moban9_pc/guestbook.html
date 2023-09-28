@@ -1,0 +1,163 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>我的网站</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="order by dede58.com" />
+    <meta name="viewport" content="width=1380">
+    <link href="#(tpath)/static/css/aos.css" rel="stylesheet">
+    <link href="#(tpath)/static/css/style.css" rel="stylesheet">
+    <link href="#(tpath)/static/css/common.css" rel="stylesheet">
+    <script src="#(tpath)/static/js/jquery.js"></script>
+    <script src="#(tpath)/static/js/jquery.superslide.2.1.1.js"></script>
+    <script src="#(tpath)/static/js/common.js"></script>
+</head>
+<body>
+<!-- header start -->
+#include("header.html")
+<!-- header end -->
+<!--内页大图开始-->
+<div class="nybanner" aos="fade-up" aos-easing="ease" aos-duration="700"> <img src="#(tpath)/static/images/nybanner.jpg"/></div>
+<!--内页大图结束-->
+<div class="submian">
+    <div class="w1200 clearfix">
+        <div class="sobtitle"><s class="icon"></s>您的位置：<a href='#(currentSite.url)/'>主页</a> > <a href='#(currentCategory.path)'>在线留言</a></div>
+        <div class="subleft fl">
+            <!--栏目分类开始-->
+            <div class="lefta bor9">
+                <div class="title">
+                    <h2>在线留言</h2>
+                </div>
+                <div class="comt">
+                    <ul>
+
+                    </ul>
+                </div>
+            </div>
+            <!--栏目分类结束-->
+            <!--推荐产品开始-->
+            <div class="leftnews bor9">
+                <div class="title"><i>推荐产品</i></div>
+                <div class="leftprocomt clearfix">
+                    <ul>
+                        #content_list(count=4,categoryId=1101)
+                        #for(content : contents)
+                        <li #if(for.index%2==0) style='margin-right:0;' #end> <a href="#(content.path)" title="#(content.title)"><img src="#(content.ico)" alt="#(content.title)">
+                            <p>#(content.title)</p>
+                        </a></li>
+                        #end
+                        #end
+                    </ul>
+                </div>
+            </div>
+            <!--推荐产品结束-->
+            <!--联系我们开始-->
+            <div class="leftnews bor9">
+                <div class="title"><i>联系我们</i></div>
+                <div class="leftcont">
+                    <h2>我的网站</h2>
+                    <span>地址：<br>
+      手机：<br>
+      </span>
+                    <p>咨询热线<i></i></p>
+                </div>
+            </div>
+            <!--联系我们结束-->
+        </div>
+
+        <div class="subright fr">
+            <!--单页内容开始-->
+            <h1 class="t">我的网站</h1>
+            <div class="aboutlist">
+                <p>地址：<br/>
+                    电话：<br/>
+                    QQ：<br/>
+                    手机：<br/>
+                    邮箱：</p>
+            </div>
+            <!--单页内容结束-->
+            <!--留言框架开始-->
+            <div class="t2" id="formData">在线留言</div>
+            <div class="formData clearfix">
+                <form class="form_book" onsubmit="return submsg(this);">
+                    <div class="item">
+                        <label for="name">姓名</label>
+                        <input type="text" name="contact" id="contact" class="txt">
+                        <span class="red">*</span></div>
+                    <div class="item mr0">
+                        <label for="tel">电话</label>
+                        <input type="text" name="mobile" id="mobile" class="txt">
+                        <span class="red">*</span></div>
+                    <div class="item liuyan clearfix">
+                        <label for="Content">留言内容</label>
+                        <textarea type="text" name="content" id="content" maxlength="300"></textarea>
+                    </div>
+                    <div class="item" style="display: flex;">
+                        <label for="name">验证码</label>
+                        <input type="text" name="captcha" id="captcha" class="txt">
+                        <span class="red">*</span></div>
+                        <img title="点击刷新" style="height:56px;" id="captchaImage" src="#(currentSite.url)/common/captcha/image" onclick="this.src='#(currentSite.url)/common/captcha/image?'+Math.round(Math.random()*10);" />
+                    <div class="bot fl clearfix">
+                        <input type="submit" value="提交" class="sub fr">
+                    </div>
+                </form>
+            </div>
+            <!--留言框架结束-->
+        </div>
+    </div>
+</div>
+<script>
+
+    //ajax提交留言
+    function submsg(obj){
+        if(document.getElementById('contact').value.length == 0)
+        {
+            alert('您的姓名不能为空！');
+            return false;
+        }
+        if(document.getElementById('mobile').value.length == 0)
+        {
+            alert('您的电话不能为空！');
+            return false;
+        }
+        var url='#(currentSite.url)/guestbook/save';
+        var contact=$(obj).find("#contact").val();
+        var mobile=$(obj).find("#mobile").val();
+        var content=$(obj).find("#content").val();
+        var captcha=$(obj).find("#captcha").val();
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            dataType: 'json',
+            data: {
+                contact: contact,
+                mobile: mobile,
+                content: content,
+                captcha: captcha
+            },
+            success: function (response, status) {
+                if(response.type=="success"){
+                    alert("谢谢您的反馈，我们会尽快联系您！");
+                    $(obj)[0].reset();
+                }else{
+                    alert(response.msg);
+                }
+            },
+            error:function(xhr,status,error){
+                alert('返回数据异常！');
+            }
+        });
+        return false;
+    }
+</script>
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->
+</body>
+</html>

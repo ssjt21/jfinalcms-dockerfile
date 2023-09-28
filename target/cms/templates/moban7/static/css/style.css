@@ -1,0 +1,114 @@
+/**
+ *  作者：NRC - 湖南竞网科技有限公司
+ *  时间：2014-10-10
+ *  准则：CSS3.0 & css2.0
+ *  联系：e.hnjing.com
+ **/
+
+@charset "utf-8";
+/* 表单验证 */
+.formData { width:550px; margin:0px auto 20px; padding-top:30px; }
+.formData tr.item label { margin-right:5px; }
+.formData tr.item .tip { width:130px; margin-left:20px; }
+.formData tr.item input, .formData tr.code input { width:250px; height:25px; line-height:25px; color:#666; border:1px solid #ccc; border-radius:2px; padding:0 5px; }
+.formData tr.item textarea { width:250px; height:80px; color:#666; border:1px solid #ccc; margin-bottom:15px; border-radius:3px; padding:0 5px; }
+.formData tr.item input:focus, .formData tr.code input:focus, .formData tr.item textarea:focus { border:1px solid #999; }
+.formData tr.code input { width:90px; }
+.formData .sub { width:102px; height:32px; line-height:32px; text-align:center; background:#999; border-radius:2px; color:#FFF; border:none; margin-right:10px; cursor:pointer; }
+.formData .sub:hover { background:#666; }
+.formData tr.code img { vertical-align:middle; *vertical-align:0; margin-left:10px; }
+.formData .err, .formData .red { color:#ff0000; }
+.formData .red { font-size:16px; line-height:16px; font-weight:700; margin-right:5px; }
+/* cms2.0.map */
+.baiduMap { margin:0 auto 20px; background:#eee; box-shadow:2px 4px 5px rgba(0,0,0,0.1); width:90%; height:400px; }
+.BMap_bubble_title a { display:inline-block; height:25px; line-height:26px; overflow:hidden; padding:0 10px; border-radius:3px; _background:#999; _color:#FFF; }
+.BMap_bubble_title a:hover { _background:#666; _color:#FFF; }
+.BMap_bubble_title > a { background:#999; color:#FFF; }
+.BMap_bubble_title > a:hover { background:#666; }
+#baiduMap span.BMap_Marker div { _width:19px !improtant; _height:25px !improtant; _background:url(./ico/marker_red_sprite.png) 0 0 no-repeat; }  /* IE6下显示图标 */
+/* 客服效果 */
+.jing_kf { position:absolute; right:10px; top:100px; z-index:100; }
+.jing_top { width:119px; height:66px; }
+.jing_pointer { width:27px; height:117px; position:absolute; top:95px; left:-22px; cursor:pointer; }
+.jing_pointer.active { left:-17px; background-position:0 -120px !important; }
+.jing_main { width:119px; min-height:50px; position:relative; padding-top:10px; }
+.jing_main ul { padding-left:8px; margin-bottom:5px; }
+.jing_main ul.t { overflow:hidden; }
+.jing_main ul.t li.e { text-align:center; line-height:18px; }
+.jing_main ul.t li.e span, .jing_main ul.t li.e strong { padding:0 5px; display:block; font-size:12px; }
+.jing_main ul.t li.b { height:40px; }
+.jing_kf i.online { width:103px; height:35px; display:block; }
+.jing_main ul.t li.lin { margin-bottom:10px; }
+.jing_main .mobileCode { width:112px; padding-left:3px; text-align:center; margin-bottom:15px; }
+.jing_main i.dimCode { width:90px; height:90px; border:1px solid #dedede; display:block; margin:0 auto; box-shadow:0 0 3px rgba(0,0,0,0.1); }
+.jing_main i.dimCode img { display:block; width:90px; height:90px; }
+.jing_main .mobileCode span, .jing_main div.mobileCode a { display:block; font-weight:400; }
+.jing_main .mobileCode a:hover { font-weight:700; }
+.jing_main .returnTop { height:30px; position:relative; }
+.jing_main .returnTop a { width:32px; height:50px; cursor:pointer; position:absolute; top:1px; left:46px; }
+/* jing_kf_1 */
+.jing_kf_1 .jing_top { background:url(./kf/1/kf_top.png) center top no-repeat; }
+.jing_kf_1 .jing_main { background:url(./kf/1/kf_bg.png) center bottom no-repeat; }
+.jing_kf_1 i.online { background:url(./kf/1/qq_jt.gif) 0 0 no-repeat;  }
+.jing_kf_1 .returnTop a { background:url(./kf/1/kf_returntop.png) center bottom no-repeat; }
+.jing_kf_1 div.mobileCode span, .jing_kf_1 div.mobileCode a, .jing_kf_1 li.e span, .jing_kf_1 li.e strong { color:#CC0000; }
+.jing_kf_1 .jing_pointer { background:url(./kf/1/pointer.png) 0 0 no-repeat; }
+/* jing_kf_2 */
+.jing_kf_2 .jing_top { background:url(./kf/2/kf_top.png) center top no-repeat; }
+.jing_kf_2 .jing_main { background:url(./kf/2/kf_bg.png) center bottom no-repeat; }
+.jing_kf_2 i.online { background:url(./kf/2/qq_jt.gif) 0 0 no-repeat;  }
+.jing_kf_2 .returnTop a { background:url(./kf/2/kf_returntop.png) center bottom no-repeat; }
+.jing_kf_2 div.mobileCode span, .jing_kf_2 div.mobileCode a, .jing_kf_2 li.e span, .jing_kf_2 li.e strong { color:#ff8b00; }
+.jing_kf_2 .jing_pointer { background:url(./kf/2/pointer.png) 0 0 no-repeat; }
+/* jing_kf_3 */
+.jing_kf_3 .jing_top { background:url(./kf/3/kf_top.png) center top no-repeat; }
+.jing_kf_3 .jing_main { background:url(./kf/3/kf_bg.png) center bottom no-repeat; }
+.jing_kf_3 i.online { background:url(./kf/3/qq_jt.gif) 0 0 no-repeat;  }
+.jing_kf_3 .returnTop a { background:url(./kf/3/kf_returntop.png) center bottom no-repeat; }
+.jing_kf_3 div.mobileCode span, .jing_kf_3 div.mobileCode a, .jing_kf_3 li.e span, .jing_kf_3 li.e strong { color:#6fba2c; }
+.jing_kf_3 .jing_pointer { background:url(./kf/3/pointer.png) 0 0 no-repeat; }
+/* jing_kf_4 */
+.jing_kf_4 .jing_top { background:url(./kf/4/kf_top.png) center top no-repeat; }
+.jing_kf_4 .jing_main { background:url(./kf/4/kf_bg.png) center bottom no-repeat; }
+.jing_kf_4 i.online { background:url(./kf/4/qq_jt.gif) 0 0 no-repeat;  }
+.jing_kf_4 .returnTop a { background:url(./kf/4/kf_returntop.png) center bottom no-repeat; }
+.jing_kf_4 div.mobileCode span, .jing_kf_4 div.mobileCode a, .jing_kf_4 li.e span, .jing_kf_4 li.e strong { color:#006dce; }
+.jing_kf_4 .jing_pointer { background:url(./kf/4/pointer.png) 0 0 no-repeat; }
+/* jing_kf_5 */
+.jing_kf_5 .jing_top { background:url(./kf/5/kf_top.png) center top no-repeat; }
+.jing_kf_5 .jing_main { background:url(./kf/5/kf_bg.png) center bottom no-repeat; }
+.jing_kf_5 i.online { background:url(./kf/5/qq_jt.gif) 0 0 no-repeat;  }
+.jing_kf_5 .returnTop a { background:url(./kf/5/kf_returntop.png) center bottom no-repeat; }
+.jing_kf_5 div.mobileCode span, .jing_kf_5 div.mobileCode a, .jing_kf_5 li.e span, .jing_kf_5 li.e strong { color:#8a3dbd; }
+.jing_kf_5 .jing_pointer { background:url(./kf/5/pointer.png) 0 0 no-repeat; }
+/* jing_kf_6 */
+.jing_kf_6 .jing_top { background:url(./kf/6/kf_top.png) center top no-repeat; }
+.jing_kf_6 .jing_main { background:url(./kf/6/kf_bg.png) center bottom no-repeat; }
+.jing_kf_6 i.online { background:url(./kf/6/qq_jt.gif) 0 0 no-repeat;  }
+.jing_kf_6 .returnTop a { background:url(./kf/6/kf_returntop.png) center bottom no-repeat; }
+.jing_kf_6 div.mobileCode span, .jing_kf_6 div.mobileCode a, .jing_kf_6 li.e span, .jing_kf_6 li.e strong { color:#e90082; }
+.jing_kf_6 .jing_pointer { background:url(./kf/6/pointer.png) 0 0 no-repeat; }
+/* jing_kf_7 */
+.jing_kf_7 .jing_top { background:url(./kf/7/kf_top.png) center top no-repeat; }
+.jing_kf_7 .jing_main { background:url(./kf/7/kf_bg.png) center bottom no-repeat; }
+.jing_kf_7 i.online { background:url(./kf/7/qq_jt.gif) 0 0 no-repeat;  }
+.jing_kf_7 .returnTop a { background:url(./kf/7/kf_returntop.png) center bottom no-repeat; }
+.jing_kf_7 div.mobileCode span, .jing_kf_7 div.mobileCode a, .jing_kf_7 li.e span, .jing_kf_7 li.e strong { color:#65371f; }
+.jing_kf_7 .jing_pointer { background:url(./kf/7/pointer.png) 0 0 no-repeat; }
+/* jing_kf_8 */
+.jing_kf_8 .jing_top { background:url(./kf/8/kf_top.png) center top no-repeat; }
+.jing_kf_8 .jing_main { background:url(./kf/8/kf_bg.png) center bottom no-repeat; }
+.jing_kf_8 i.online { background:url(./kf/8/qq_jt.gif) 0 0 no-repeat;  }
+.jing_kf_8 .returnTop a { background:url(./kf/8/kf_returntop.png) center bottom no-repeat; }
+.jing_kf_8 div.mobileCode span, .jing_kf_8 div.mobileCode a, .jing_kf_8 li.e span, .jing_kf_8 li.e strong { color:#000000; }
+.jing_kf_8 .jing_pointer { background:url(./kf/8/pointer.png) 0 0 no-repeat; }
+/* jing_kf_9 */
+.jing_kf_9 .jing_top { background:url(./kf/9/kf_top.png) center top no-repeat; }
+.jing_kf_9 .jing_main { background:url(./kf/9/kf_bg.png) center bottom no-repeat; }
+.jing_kf_9 i.online { background:url(./kf/9/qq_jt.gif) 0 0 no-repeat;  }
+.jing_kf_9 .returnTop a { background:url(./kf/9/kf_returntop.png) center bottom no-repeat; }
+.jing_kf_9 div.mobileCode span, .jing_kf_9 div.mobileCode a, .jing_kf_9 li.e span, .jing_kf_9 li.e strong { color:#1a5f02; }
+.jing_kf_9 .jing_pointer { background:url(./kf/9/pointer.png) 0 0 no-repeat; }
+
+/* 屏蔽外来广告 */
+#EG0phD8f { display:none !important; z-index:-10 !important; opacity:0 !important; visibility:hidden !important; -webkit-transform:scale(0,0); -moz-transform:scale(0,0); -ms-transform:scale(0,0); transform:scale(0,0); }

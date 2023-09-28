@@ -1,0 +1,35 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<html style="font-size: 56.25px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <title>产品中心_我的网站</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="#(tpath)/static/css/style.css" rel="stylesheet">
+    <link href="#(tpath)/static/css/common.css" rel="stylesheet">
+    <script src="#(tpath)/static/js/autofontsize.min.js"></script>
+    <script src="#(tpath)/static/js/jquery.js"></script>
+    <script src="#(tpath)/static/js/clipboard.min.js"></script>
+    <script src="#(tpath)/static/js/common.js"></script>
+</head>
+<body>
+<!-- header start -->
+#include("header.html")
+<!-- header end-->
+<!--单页内容开始-->
+<section class="content showInfo">
+    <div class="contxt">
+        #(currentCategory.introduction)
+    </div>
+</section>
+<!--单页内容结束-->
+<div id="returntop" class="icon hidden"></div>
+<!-- footer start -->
+#include("footer.html")
+<!-- footer end -->
+</body>
+</html>

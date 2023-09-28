@@ -1,0 +1,22 @@
+<!-- 分页 -->
+#if(totalPages>1)  
+   <div class="pager">
+     	<a href="#(pattern)1">首页</a>
+     	#if(hasPrevious)
+     	<a href="#(pattern)#(previousPageNumber)">上一页</a>
+     	#end
+     	#for(segmentPageNumber : segment)
+        #if(segmentPageNumber != pageNumber)
+            <a href="#(pattern)#(segmentPageNumber)">#(segmentPageNumber)</a>
+        #else
+            <a href="javascript:;">#(segmentPageNumber)</a>
+        #end
+    	#end
+      	#if(hasNext)
+      	<a  href="#(pattern)#(nextPageNumber)">下一页</a>
+      	#end
+      	<a href="#(pattern)#(totalPages)">尾页</a>
+     </div>
+#else
+   	
+#end

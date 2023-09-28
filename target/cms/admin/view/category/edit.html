@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- 公共页面 -->
+	#include("../include/common.html")
+	<!-- 公共页面 /-->
+</head>
+<body class="hold-transition skin-purple sidebar-mini">
+    <div class="wrapper">
+        <!-- 页面头部 -->
+        #include("../include/header.html")
+        <!-- 页面头部 /-->
+        <!-- 导航侧栏 -->
+        #include("../include/menu.html")
+        <!-- 导航侧栏 /-->
+        <!-- 内容区域 -->
+        <div class="content-wrapper" id="contentDiv">
+            <!-- 正文区域 -->
+            <section class="content">
+       			<form id="inputForm" action="#(base)/admin/category/update" method="post">
+           		<input type="hidden" name="id" value="#(category.id)">
+   	        	<div class="box-body">
+	            	<!--tab页-->
+		            <div class="nav-tabs-custom">
+		                <!--tab头-->
+		                <ul class="nav nav-tabs">
+		                    <li class="active"><a href="#tab-basic" data-toggle="tab">基本选项</a></li>
+		                    <li><a href="#tab-high" data-toggle="tab">高级选项</a></li>
+		                </ul>
+		                <!--tab头/-->
+		                <!--tab内容-->
+		                <div class="tab-content">
+		                    <div class="tab-pane active" id="tab-basic">
+			                    <div class="row data-type">
+			                        <div class="col-md-2 title">名称</div>
+			                        <div class="col-md-10 data">
+			                            <input type="text" class="form-control" placeholder="名称" name="name" value="#(category.name)">
+			                        </div>
+			                        <div class="col-md-2 title">上级分类</div>
+			                        <div class="col-md-10 data">
+			                            <select class="form-control" name="parentId">
+					                       <option value="">顶级分类</option>
+											#for(categoryItem : categoryTree)
+											<option value="#(categoryItem.id)" #if(category.parentId==categoryItem.id) selected #end>
+												#if(categoryItem.grade != 0)
+												     #for(i = 0; i < categoryItem.grade; i++)
+														&nbsp;&nbsp;
+													#end
+												#end
+												#(categoryItem.name)
+											</option>
+											#end
+					                    </select>
+			                        </div>
+			                        <div class="col-md-2 title">内容模型</div>
+			                        <div class="col-md-10 data">
+			                            <select class="form-control" name="modelId" id="modelId">
+					                       <option value="">--请选择--</option>
+											#for(model : models)
+												<option value="#(model.id)" #if(category.modelId==model.id) selected #end>#(model.name)</option>
+											#end
+					                    </select>
+			                        </div>
+				                	<div class="col-md-2 title">列表模板</div>
+				                    <div class="col-md-10 data">
+				                        <input type="text" class="form-control" placeholder="列表模板" name="listTemplate" id="listTemplate" value="#(category.listTemplate)">
+				                    </div>
+				                    <div class="col-md-2 title">详情模板</div>
+				                    <div class="col-md-10 data">
+				                        <input type="text" class="form-control" placeholder="详情模板" name="detailTemplate" id="detailTemplate" value="#(category.detailTemplate)">
+				                    </div>
+				                    <div class="col-md-2 title">URL目录</div>
+				                    <div class="col-md-10 data">
+				                        <input type="text" class="form-control" placeholder="例如：news" id="cat" name="cat" value="#(category.cat)">
+				                    </div>
+				                    <div class="col-md-2 title">状态</div>
+		                            <div class="col-md-10 data">
+		                                <div class="form-group form-inline">
+		                                    <div class="radio"><label><input type="radio" name="status" value="1" #if(category.status==1) checked #end> 显示</label></div>
+		                                    <div class="radio"><label><input type="radio" name="status" value="0" #if(category.status==0) checked #end> 隐藏</label></div>
+		                                </div>
+		                            </div>
+		                            <div class="col-md-2 title editer">简介</div>
+									<div class="col-md-10 data editer">
+										<textarea id="introduction" name="introduction" style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">#(category.introduction)</textarea>
+									</div>
+			                    </div>
+		                    </div>
+		                    <div class="tab-pane" id="tab-high">
+		                    	<div class="row data-type">
+		                    		<div class="col-md-2 title">副名称</div>
+			                        <div class="col-md-10 data">
+			                            <input type="text" class="form-control" placeholder="副名称" name="subname" value="#(category.subname)">
+			                        </div>
+			                        <div class="col-md-2 title rowHeight2x">备注</div>
+			                        <div class="col-md-10 data rowHeight2x">
+			                            <textarea class="form-control" rows="3" placeholder="备注" name="remark">#(category.remark)</textarea>
+			                        </div>
+			                        <div class="col-md-2 title">跳转链接</div>
+			                        <div class="col-md-10 data">
+			                            <input type="text" class="form-control" placeholder="跳转链接" name="outlink" value="#(category.outlink)">
+			                        </div>
+			                        <div class="col-md-2 title" style="height: 170px;">缩略图</div>
+				                    <div class="col-md-10 data" style="height: 170px;" type="file">
+				                       	<div class="row" style="margin-left: 0px;margin-right: 0px;">
+				                        	<div class="col-md-3 padding-clear">
+					                            <input type="text" class="form-control" placeholder="缩略图" name="ico" value="#(category.ico)">
+				                        	</div>
+				                        	<div class="col-md-2" style="padding-right: 0px;">
+				                        		<div style="float: right;" class="filePicker">选择文件</div>
+				                        	</div>
+				                       	</div>
+				                       	<div class="row" style="margin-left: 0px;margin-right: 0px;">
+			                        		<div class="pic picbox">
+			                        			<dl>
+													<dt><a href="javascript:;"><img src="#(category.ico)" onerror="javascript:this.src='#(base)/static/images/nopic.jpg';" class="preview"/></a></dt>
+													<dd>删除</dd>
+												</dl>
+			                   				</div>
+			                        	</div>
+				                    </div>
+				                    <div class="col-md-2 title" style="height: 170px;">背景图</div>
+				                    <div class="col-md-10 data" style="height: 170px;" type="file">
+				                       	<div class="row" style="margin-left: 0px;margin-right: 0px;">
+				                        	<div class="col-md-3 padding-clear">
+					                            <input type="text" class="form-control" placeholder="背景图" name="image" value="#(category.image)">
+				                        	</div>
+				                        	<div class="col-md-2" style="padding-right: 0px;">
+				                        		<div style="float: right;" class="filePicker">选择文件</div>
+				                        	</div>
+				                       	</div>
+				                       	<div class="row" style="margin-left: 0px;margin-right: 0px;">
+			                        		<div class="pic picbox">
+			                        			<dl>
+													<dt><a href="javascript:;"><img src="#(category.image)" onerror="javascript:this.src='#(base)/static/images/nopic.jpg';" class="preview"/></a></dt>
+													<dd>删除</dd>
+												</dl>
+			                   				</div>
+			                        	</div>
+				                    </div>
+				                    <div class="col-md-2 title" style="height: 170px;">块数据</div>
+									<div class="col-md-10 data" style="height: 170px;">
+										<div class="row" style="margin-left: 0px; margin-right: 0px;">
+											<button type="button" class="btn btn-default" id="addChunk">添加</button>
+										</div>
+										<div class="row" style="margin-left: 0px; margin-right: 0px;" id="chunkBody">
+											#if(content.chunkValues??)
+											#for(chunkValueItem : content.chunkValues)
+											<div id="chunkIndex#(for.index)" class="chunk">
+												<input type="hidden" name="chunkValues" value="#(chunkValueItem)">#(chunkValueItem)&nbsp;&nbsp;&nbsp;
+												<a href="javascript:void(0)" class="edit" chunkIndex="#(for.index)">编辑</a>&nbsp;&nbsp;
+												<a href="javascript:void(0)" class="delete">删除</a>&nbsp;&nbsp;
+												<a href="javascript:void(0)" class="toBefore">向上</a>&nbsp;&nbsp;
+												<a href="javascript:void(0)" class="toAfter">向下</a>&nbsp;&nbsp;
+											</div>
+											#end
+											#end
+										</div>
+									</div>
+				                    <div class="col-md-2 title">标题</div>
+				                    <div class="col-md-10 data">
+				                        <input type="text" class="form-control" placeholder="标题" name="title" value="#(category.title)">
+				                    </div>
+				                    <div class="col-md-2 title">关键词</div>
+				                    <div class="col-md-10 data">
+				                        <input type="text" class="form-control" placeholder="关键词" name="keywords" value="#(category.keywords)">
+				                    </div>
+				                    <div class="col-md-2 title">描述</div>
+				                    <div class="col-md-10 data">
+				                        <input type="text" class="form-control" placeholder="描述" name="description" value="#(category.description)">
+				                    </div>
+		                    	</div>
+	                    	</div>
+			                <!--工具栏-->
+			                <div class="box-tools text-center">
+			                    <button type="submit" class="btn bg-maroon">保存</button>
+			                    <button type="button" class="btn bg-default" onclick="history.back(-1);">返回</button>
+			                </div>
+			                <!--工具栏/-->
+	                	</div>
+	                	<!--tab内容/-->
+	                </div>
+	                <!--tab页/-->
+               	</div>
+              	</form>
+            </section>
+            <!-- 正文区域 /-->
+        </div>
+        <!-- 内容区域 /-->
+        <!-- 底部导航 -->
+        #include("../include/footer.html")
+        <!-- 底部导航 /-->
+    </div>
+   	<!-- modal -->
+	<div class="modal fade" id="chunkModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">信息</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<input type="hidden" id="chunkIndex" value=""/>
+	        <textarea class="form-control" rows="3" id="chunkValue"></textarea>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+	        <button type="button" class="btn btn-primary" id="chunkSubmit">保存</button>
+	      </div>
+	    </div>
+	    <!-- /.modal-content -->
+	  </div>
+	  <!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+</body>
+</html>
+<!---->
+<script>
+ $(document).ready(function() {
+     // 激活导航位置
+     setSidebarActive("admin-category");
+ });
+</script>
+<script type="text/javascript">
+function loadTemplate(){
+	var modelId = $("#modelId").val();
+	if(isEmpty(modelId)){
+		$("#listTemplate").val("");
+		$("#detailTemplate").val("");
+		return;
+	}
+	$.ajax({
+        url: "#(base)/admin/category/modelTemplate",
+        type: "POST",
+        data: {"modelId":modelId},
+        dataType: "json",
+        cache: false,
+        success: function(response) {
+            $("#listTemplate").val(response.listTemplate);
+            $("#detailTemplate").val(response.detailTemplate);
+        }
+    });
+}
+
+$().ready(function() {
+
+	var $inputForm = $("#inputForm");
+	var $introduction = $("#introduction");
+	try{
+		UE.delEditor("introduction");
+	}catch (e) {
+	}
+	$introduction.editor();
+	var $modelId = $("#modelId");
+	
+	$.each($(".filePicker"),function(index,item){
+		$(item).uploader();
+	});
+	
+   $modelId.change(function() {
+	   loadTemplate();
+    });
+   
+   //数据块chunkValue start
+   var chunkIndex = 0;
+   $("#addChunk").on("click",function() {
+       $('#chunkModal').modal('show');
+       $("#chunkIndex").val(chunkIndex);
+   });
+   $("#chunkSubmit").on("click",function() {
+       var inputChunkValue = $("#chunkValue").val();
+       var inputChunkIndex = $("#chunkIndex").val();
+       if (isEmpty(inputChunkValue)) {
+           alert("数据不能为空");
+           return;
+       }
+       var html = '<input type="hidden" name="chunkValues" value="' + inputChunkValue + '">' + inputChunkValue + '&nbsp;&nbsp;&nbsp;'+
+     			  '<a href="javascript:void(0)" class="edit" chunkIndex="' + inputChunkIndex + '">编辑</a>&nbsp;&nbsp;'+
+     			  '<a href="javascript:void(0)" class="delete">删除</a>&nbsp;&nbsp;'+
+     			  '<a href="javascript:void(0)" class="toBefore">向上</a>&nbsp;&nbsp;'+
+     			  '<a href="javascript:void(0)" class="toAfter">向下</a>&nbsp;&nbsp;';
+       var length = $("#chunkBody").find("#chunkIndex" + inputChunkIndex).length;
+       if (length < 1) {
+           $("#chunkBody").append('<div id="chunkIndex' + inputChunkIndex + '" class="chunk">' + html + '</div>');
+       } else {
+           $("#chunkBody").find("#chunkIndex" + inputChunkIndex).html(html);
+       }
+       $('#chunkModal').modal('hide');
+       $("#chunkIndex").val("");
+       $("#chunkValue").val("");
+       chunkIndex++;
+   });
+
+   $("#chunkBody").on("click", ".delete",function() {
+       $(this).parent().remove();
+   });
+
+   $("#chunkBody").on("click", ".edit",function() {
+       $("#addChunk").trigger("click");
+       var chunkValue = $(this).parent().find("input").val();
+       var chunkIndex = $(this).attr("chunkIndex");
+       $("#chunkValue").val(chunkValue);
+       $("#chunkIndex").val(chunkIndex);
+   });
+   
+    $("#chunkBody").on("click", ".toBefore",function() {
+	   var chunkDiv = $(this).parent();
+	   var preChunkDiv = chunkDiv.prev(".chunk");
+	   if(preChunkDiv.length<1){
+		   alert("已经到最前了");
+		   return;
+	   }
+	   $(chunkDiv.prop("outerHTML")).insertBefore(preChunkDiv);
+	   chunkDiv.remove();
+   });
+   
+   $("#chunkBody").on("click", ".toAfter",function() {
+	   var chunkDiv = $(this).parent();
+	   var nextChunkDiv = chunkDiv.next(".chunk");
+	   if(nextChunkDiv.length<1){
+		   alert("已经到最后了");
+		   return;
+	   }
+	   $(chunkDiv.prop("outerHTML")).insertAfter(nextChunkDiv);
+	   chunkDiv.remove();
+   }); 
+   //数据块chunkValue end
+   
+	// 表单验证
+	$inputForm.validate({
+		rules: {
+			name: "required",
+			modelId: "required"
+		},
+		submitHandler: function(form) {
+			$.ajax({
+				url: "checkCat",
+				type: "POST",
+				data: {"cat":$("#cat").val(),"id":$("input[name='id']").val()},
+				dataType: "json",
+				cache: false,
+				success: function(response) {
+					if (response) {
+						form.submit();
+					}else{
+						swal({title:'', text:'URL目录已存在',icon: 'error'});
+					}
+				}
+			});
+			return false;
+		}
+	});
+
+});
+</script>

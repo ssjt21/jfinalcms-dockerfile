@@ -1,0 +1,46 @@
+<div class="top clearfix"> 
+    <div class="top_header">
+     <div class="top_header_main">
+      <div class="fr">
+       电话/微信 13888888888 咨询QQ 123456
+      </div>
+     </div>
+    </div> 
+    <div class="top_main clearfix"> 
+     <div class="top_main_con clearfix"> 
+      <div class="logo fl">
+       <a href="#(currentSite.url)/"><img src="#(tpath)/static/images/logo.png"></a>
+      </div> 
+      <div class="fr"> 
+       <div class="nav"> 
+        <a href="#(currentSite.url)/" #if(currentCategory??) #else class="on" #end>首页</a> 
+        #category_root_list()
+        #for(category : categorys)
+        <a href="#(category.path)" #if(currentCategory?? && category.id==currentCategory.id)class="on"#end>#(category.name)</a> 
+        #end
+        #end
+       </div> 
+      </div> 
+      <div class="menu_logo"></div> 
+      <a href="javascript:;" class="menu"><span></span><span></span><span></span></a> 
+     </div> 
+    </div> 
+    <div class="nav_bj"></div> 
+    <div class="navs clearfix"> 
+     <div class="navs_menu fr"> 
+      <div class="menu_close clearfix">
+       <a href="javascript:;" class="close"></a>
+      </div> 
+      <div class="menu_nav"> 
+       <ul> 
+        <li><a href="#(currentSite.url)/" #if(currentCategory??) #else class="on" #end>首页</a></li> 
+        #category_root_list()
+        #for(category : categorys)
+        <li><a href="#(category.path)" #if(currentCategory?? && category.id==currentCategory.id)class="on"#end>#(category.name)</a></li> 
+        #end
+        #end
+       </ul> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 

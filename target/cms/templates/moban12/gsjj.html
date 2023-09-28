@@ -1,0 +1,201 @@
+<!-- common start -->
+#include("common.html")
+<!-- common end -->
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <meta content="width=device-width, minimum-scale=1,initial-scale=1, maximum-scale=1, user-scalable=1;" id="viewport" name="viewport"> 
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"> 
+  <!--离线应用的另一个技巧--> 
+  <meta content="yes" name="apple-mobile-web-app-capable"> 
+  <!--指定的iphone中safari顶端的状态条的样式--> 
+  <meta content="black" name="apple-mobile-web-app-status-bar-style"> 
+  <!--告诉设备忽略将页面中的数字识别为电话号码--> 
+  <meta content="telephone=no" name="format-detection"> 
+  <meta http-equiv="Page-Enter" content="revealTrans(duration=5, transition=2)"> 
+  <meta http-equiv="Page-Exit" content="revealTrans(duration=5, transition=2)"> 
+  <title>优势</title> 
+  <meta name="description" content="站点描述"> 
+  <meta name="keywords" content="站点默认关键字"> 
+  <link rel="stylesheet" type="text/css" href="#(tpath)/static/css/basic.css"> 
+  <link rel="stylesheet" type="text/css" href="#(tpath)/static/css/style.css"> 
+  <script type="text/javascript" src="#(tpath)/static/js/jquery.min.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/TouchSlide.1.1.js"></script> 
+  <script src="#(tpath)/static/js/slide-js.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/respond.min.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/respond.src.js"></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/script.js" defer></script> 
+  <script type="text/javascript" src="#(tpath)/static/js/lazy.js"></script> 
+  <script>
+    $(function(){
+$("img").lazyload({
+threshold : 200,
+effect : "fadeIn"
+});
+     })
+</script> 
+  <!--[if lt IE 9]>
+<script>
+document.createElement('video');
+</script>
+<![endif]--> 
+ </head> 
+ <body> 
+  <div id="wrap"> 
+   <!-- header start -->
+ #include("header.html")
+ <!-- header end -->
+   <div class="kc_banner" style="background:url(#(tpath)/static/images/bj12.png) center center no-repeat;"> 
+    <div class="kc_banner_t1">
+     你适合成为
+     <b>职业DJ师</b>吗？
+    </div> 
+    #category(id="905")<a href="#(category.path)" target="_blank" class="kc_banner_t2">#end
+     <div>
+      点这里实现梦想
+     </div></a> 
+   </div> 
+   <div class="pagenav clearfix"> 
+    <div class="pcbox"> 
+     <div class="pagenav_nav clearfix"> 
+      <ul> 
+       #category_children_list(categoryId=currentCategory.parentId)
+      #for(category : categorys)
+       <li #if(category.id==currentCategory.id)class="on"#end><a href="#(category.path)">#(category.name)</a></li> 
+       #end
+      #end 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="ys_c1 clearfix"> 
+    <div class="pcbox"> 
+     <div class="ys_c1_img"> 
+      <img src="#(tpath)/static/images/img19.png">
+     </div> 
+     <div class="c1_text" style="color:#333333;">
+       模客DJ培训中心隶属于武汉模板客文化传播有限公司。公司创始人从2005年开始从事DJ培训事业。迄今超过11年。2016年起，XX正式成为美国DMCC专业DJ组织在中国地区唯一合伙人机构，唯一有权颁发美国DMCC专业DJ执业证书。
+     </div> 
+     <div class="c1_list clearfix"> 
+      <ul> 
+       <li> 
+        <div class="c1_ico01">
+          &nbsp;
+        </div> 
+        <div class="c1phone_ico01">
+          &nbsp;
+        </div> 
+        <div class="c1list_title" style="color:#333333;">
+          资历最深
+        </div> 
+        <div class="c1list_text" style="color:#333333;">
+          2005年开创DJ事业至今超过10年
+         <br> 国内首家DJ艺术培训中心
+        </div> 
+        <div class="c1list_text_phone" style="color:#333333;">
+          2005年开创DJ事业至今超过10年
+         <br> 国内首家DJ艺术培训中心
+        </div> </li> 
+       <li> 
+        <div class="c1_ico02">
+          &nbsp;
+        </div> 
+        <div class="c1phone_ico02">
+          &nbsp;
+        </div> 
+        <div class="c1list_title" style="color:#333333;">
+          体系最完整
+        </div> 
+        <div class="c1list_text" style="color:#333333;">
+          除了完整的精益DJ技术课程体系，还包含了智商+情商+财商
+         <br> 的课程体系，花一样钱，学四样内容
+        </div> 
+        <div class="c1list_text_phone" style="color:#333333;">
+          除了完整的精益DJ技术课程体系，还包含了智商+情商+财商的课程体系，花一样钱，学四样内容
+        </div> </li> 
+       <li> 
+        <div class="c1_ico03">
+          &nbsp;
+        </div> 
+        <div class="c1phone_ico03">
+          &nbsp;
+        </div> 
+        <div class="c1list_title" style="color:#333333;">
+          资历最深
+        </div> 
+        <div class="c1list_text" style="color:#333333;">
+          美国DMCC专业DJ组织在中国地区唯一合伙人机构，
+         <br> 唯一有权颁发美国DMCC专业DJ执业证书
+        </div> 
+        <div class="c1list_text_phone" style="color:#333333;">
+          美国DMCC专业DJ组织在中国地区唯一合伙人机构，唯一有权颁发美国DMCC专业DJ执业证书
+        </div> </li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="ys_c2 clearfix"> 
+    <div class="ys_c2_t1">
+      模客DJ培训近年来取得的成绩
+    </div> 
+    <div class="pcbox"> 
+     <div class="ys_c2_list clearfix"> 
+      <ul> 
+       <li> 
+        <div class="ys_c2_list_time">
+          2012
+        </div> 
+        <div class="ys_c2_list_t1">
+          先锋DJ大赛中国华东区冠军
+        </div> 
+        <div class="ys_c2_list_t2">
+          先锋DJ大赛华南区亚军
+         <br> 先锋DJ大赛华南区六强
+        </div> </li> 
+       <li> 
+        <div class="ys_c2_list_time">
+          2013
+        </div> 
+        <div class="ys_c2_list_t1">
+          日本先锋DJ大赛亚洲区亚军
+        </div> 
+        <div class="ys_c2_list_t2">
+          先锋DJ大赛中国冠军
+         <br> 先锋DJ大赛全国六强
+        </div> </li> 
+       <li> 
+        <div class="ys_c2_list_time">
+          2014
+        </div> 
+        <div class="ys_c2_list_t1">
+          DMC搓盘DJ邀请赛冠军
+        </div> 
+        <div class="ys_c2_list_t2">
+          PIONEER中国DJ赛冠军
+         <br> DMC全国邀请赛六强
+        </div> </li> 
+       <li> 
+        <div class="ys_c2_list_time">
+          2015
+        </div> 
+        <div class="ys_c2_list_t1">
+          SMC搓盘DJ大赛冠军
+        </div> 
+        <div class="ys_c2_list_t2">
+          SMC国际搓盘大赛季军
+         <br> SMC国际搓盘大赛团体第一
+        </div> </li> 
+      </ul> 
+     </div> 
+     <div class="ys_c2_img"> 
+      <img src="#(tpath)/static/images/img20.png">
+     </div> 
+    </div> 
+   </div> 
+   <!-- footer start -->
+ #include("footer.html")
+ <!-- footer end -->
+  </div>  
+ </body>
+</html>
